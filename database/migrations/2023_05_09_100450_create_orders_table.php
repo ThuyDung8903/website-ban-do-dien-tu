@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('customer_id')->unsigned();
+            $table->foreign('customer_id')->references('id')->on('customers');
             $table->integer('shipping_method_id')->unsigned();
             $table->foreign('shipping_method_id')->references('id')->on('shipping_methods');
             $table->integer('payment_method_id')->unsigned();
@@ -36,6 +38,7 @@ return new class extends Migration
     public function down()
     {
         Schema::table('orders', function (Blueprint $table) {
+            $table->dropForeign('orders_customer_id_foreign');
             $table->dropForeign('orders_shipping_method_id_foreign');
             $table->dropForeign('orders_payment_method_id_foreign');
             $table->dropForeign('orders_order_status_id_foreign');

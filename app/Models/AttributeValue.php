@@ -8,4 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class AttributeValue extends Model
 {
     use HasFactory;
+    protected $table = 'attribute_values';
+
+    protected $fillable = [
+        'value',
+        'attribute_id',
+        'status',
+    ];
+
+    public function attributes()
+    {
+        $this->hasOne(Attribute::class, 'id', 'attribute_value');
+    }
 }

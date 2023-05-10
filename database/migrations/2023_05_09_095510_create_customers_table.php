@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('phone', 10);
             $table->string('address')->nullable();
             $table->string('avatar');
+            $table->tinyInteger('status')->default(1);
             $table->timestamps();
         });
     }

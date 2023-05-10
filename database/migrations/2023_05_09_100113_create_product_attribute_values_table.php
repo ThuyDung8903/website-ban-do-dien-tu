@@ -17,8 +17,8 @@ return new class extends Migration
             $table->increments('id');
             $table->integer('product_id')->unsigned();
             $table->foreign('product_id')->references('id')->on('products');
-            $table->integer('attribute_id')->unsigned();
-            $table->foreign('attribute_id')->references('id')->on('attributes');
+            $table->integer('attribute_value_id')->unsigned();
+            $table->foreign('attribute_value_id')->references('id')->on('attribute_values');
             $table->tinyInteger('status')->default(1);
             $table->timestamps();
         });
@@ -33,7 +33,7 @@ return new class extends Migration
     {
         Schema::table('product_attribute_values', function (Blueprint $table) {
             $table->dropForeign('product_attribute_values_product_id_foreign');
-            $table->dropForeign('product_attribute_values_attribute_id_foreign');
+            $table->dropForeign('product_attribute_values_attribute_value_id_foreign');
         });
         Schema::dropIfExists('product_attribute_values');
     }
