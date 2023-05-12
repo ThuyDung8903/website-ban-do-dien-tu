@@ -17,20 +17,20 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->decimal('price')->unsigned();
-            $table->decimal('sale_price')->unsigned();
+            $table->decimal('price', 10, 2, true);
+            $table->decimal('sale_price', 10, 2, true)->nullable()->default(null);
             $table->integer('category_id')->unsigned();
-            $table->foreign('category_id')->references('id')->on('categories');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->integer('brand_id')->unsigned();
-            $table->foreign('brand_id')->references('id')->on('brands');
+            $table->foreign('brand_id')->references('id')->on('brands')->onDelete('cascade');
             $table->text('short_description')->nullable();
             $table->longText('detail_description')->nullable();
-            $table->integer('view')->unsigned();
-            $table->integer('total_sold')->unsigned();
+            $table->integer('view')->unsigned()->nullable();
+            $table->integer('total_sold')->unsigned()->nullable()->default(0);
             $table->tinyInteger('status')->default(1);
             $table->timestamps();
+            $table->foreign('sale_price')->references('price')->on('products')->whereColumn('sale_price', '<', 'price');
         });
-        DB::statement('ALTER TABLE products ADD CONSTRAINT chk_sale_price_less_price CHECK ( products.sale_price <= products.price );');
     }
 
     /**
@@ -43,7 +43,7 @@ return new class extends Migration
         Schema::table('products', function (Blueprint $table){
             $table->dropForeign('products_category_id_foreign');
             $table->dropForeign('products_brand_id_foreign');
-            DB::statement('ALTER TABLE products DROP CONSTRAINT chk_sale_price_less_price;');
+            $table->dropForeign('products_sale_price_foreign');
         });
         Schema::dropIfExists('products');
     }

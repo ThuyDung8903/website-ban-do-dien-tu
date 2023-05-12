@@ -17,7 +17,7 @@ return new class extends Migration
             $table->increments('id');
             $table->string('value');
             $table->integer('attribute_id')->unsigned();
-            $table->foreign('attribute_id')->references('id')->on('attributes');
+            $table->foreign('attribute_id')->references('id')->on('attributes')->onDelete('cascade');
             $table->tinyInteger('status')->default(1);
             $table->timestamps();
         });
