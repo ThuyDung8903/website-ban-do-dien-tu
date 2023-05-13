@@ -15,11 +15,11 @@ return new class extends Migration
     {
         Schema::create('permissions', function (Blueprint $table) {
             $table->increments('id');
-            $table->enum('permission', ['create', 'read', 'edit', 'delete', 'full', 'admin']);
+            $table->enum('permission', ['create', 'read', 'edit', 'delete', 'crud', 'admin']);
             $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamp('start_time')->useCurrent();
-            $table->dateTime('end_time');
+            $table->dateTime('end_time')->nullable();
             $table->tinyInteger('status')->default(1);
             $table->timestamps();
         });

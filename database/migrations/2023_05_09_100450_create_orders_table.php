@@ -16,15 +16,15 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('customer_id')->unsigned();
-            $table->foreign('customer_id')->references('id')->on('customers');
+            $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade');
             $table->integer('shipping_method_id')->unsigned();
-            $table->foreign('shipping_method_id')->references('id')->on('shipping_methods');
+            $table->foreign('shipping_method_id')->references('id')->on('shipping_methods')->onDelete('cascade');
             $table->integer('payment_method_id')->unsigned();
-            $table->foreign('payment_method_id')->references('id')->on('payment_methods');
-            $table->decimal('total_price')->unsigned();
-            $table->decimal('total_bill')->unsigned();
+            $table->foreign('payment_method_id')->references('id')->on('payment_methods')->onDelete('cascade');
+            $table->decimal('total_price')->unsigned()->nullable();
+            $table->decimal('total_bill')->unsigned()->nullable();
             $table->integer('order_status_id')->unsigned();
-            $table->foreign('order_status_id')->references('id')->on('order_statuses');
+            $table->foreign('order_status_id')->references('id')->on('order_statuses')->onDelete('cascade');
             $table->text('comment')->nullable();
             $table->timestamps();
         });
