@@ -25,30 +25,30 @@ class Product extends Model
 
     public function product_attribute_values()
     {
-        $this->hasMany(ProductAttributeValue::class, 'product_id', 'id');
+        return $this->hasMany(ProductAttributeValue::class, 'product_id', 'id');
     }
 
     public function images()
     {
-        $this->hasMany(Image::class, 'product_id', 'id');
+        return $this->hasMany(Image::class, 'product_id', 'id');
     }
 
     public function reviews()
     {
-        $this->hasMany(Review::class, 'product_id', 'id');
+        return $this->hasMany(Review::class, 'product_id', 'id');
     }
 
     public function order_details()
     {
-        $this->hasMany(OrderDetail::class, 'product_id', 'id');
+        return $this->hasMany(OrderDetail::class, 'product_id', 'id');
     }
 
     public function categories()
     {
-        $this->hasOne(Category::class, 'id', 'category_id');
+        return $this->hasOne(Category::class, 'id', 'category_id');
     }
     public function brands()
     {
-        $this->hasOne(Brand::class, 'id', 'brand_id');
+        return $this->hasOne(Brand::class, 'id', 'brand_id');
     }
 }
