@@ -16,12 +16,13 @@ class ProductSeeder extends Seeder
     public function run()
     {
         $faker = Faker::create();
+        $price = $faker->numberBetween(100, 10000);
 
         for ($i = 1; $i <= 100; $i++) {
             DB::table('products')->insert([
                 'name' => 'Product '.$i,
                 'price' => $faker->numberBetween(100, 10000),
-                'sale_price' => $faker->numberBetween(80, 9000),
+                'sale_price' => $faker->numberBetween(0, $price),
                 'category_id' => $faker->numberBetween(1, 20),
                 'brand_id' => $faker->numberBetween(1, 10),
                 'short_description' => $faker->paragraph,

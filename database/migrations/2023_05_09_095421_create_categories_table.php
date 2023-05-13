@@ -18,6 +18,12 @@ return new class extends Migration
             $table->string('name');
             $table->integer('parent_id')->unsigned()->nullable();
             $table->tinyInteger('status')->default(1);
+            $table->string('slug')->nullable();
+            $table->longText('description')->nullable();
+            $table->string('image')->nullable();
+            $table->string('meta_title')->nullable();
+            $table->string('meta_keywords')->nullable();
+            $table->mediumText('meta_description')->nullable();
             $table->timestamps();
         });
     }

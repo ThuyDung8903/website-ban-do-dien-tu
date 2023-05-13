@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('path');
             $table->integer('product_id')->unsigned();;
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
-            $table->tinyInteger('is_thumbnail')->default(1);
+            $table->tinyInteger('is_thumbnail')->default(0);
             $table->timestamps();
         });
     }

@@ -21,7 +21,7 @@ class PermissionSeeder extends Seeder
 
         foreach ($users as $user) {
             DB::table('permissions')->insert([
-                'permission' => 'admin',
+                'permission' => $faker->randomElement(['create', 'read', 'edit', 'delete', 'crud', 'admin']),
                 'user_id' => $user->id,
                 'start_time' => now(),
                 'end_time' => now()->addYear(),

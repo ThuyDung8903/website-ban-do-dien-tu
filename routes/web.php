@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+<<<<<<< HEAD
 Route::get('/', function () {
     return view('welcome');
 });
@@ -21,3 +22,14 @@ Route::get('/', function () {
 Route::prefix('/admin')->group(function (){
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
 });
+=======
+//Route::get('/', function () {
+//    return view('welcome');
+//});
+
+Auth::routes();
+
+Route::get('/', [App\Http\Controllers\Frontend\FrontendController::class, 'index']);
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+>>>>>>> origin/slider-feature
