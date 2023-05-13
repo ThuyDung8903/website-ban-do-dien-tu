@@ -20,10 +20,10 @@ class UserSeeder extends Seeder
         $faker = Factory::create();
         for ($i = 1; $i <= 10; $i++) {
             DB::table('users')->insert([
-                'username' => 'username'.$i,
+                'username' => 'username' . $i,
                 'password' => Hash::make('password'),
-                'fullname' => 'User '.$i,
-                'email' => 'user'.$i.'@gmail.com',
+                'fullname' => 'User ' . $i,
+                'email' => 'user' . $i . '@gmail.com',
                 'phone' => $faker->numerify('0#########'),
                 'address' => $faker->address,
                 'avatar' => $faker->imageUrl(),

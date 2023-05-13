@@ -12,9 +12,9 @@ class ImageSeeder extends Seeder
     {
         $faker = Faker::create();
 
-        for ($i = 0; $i < 20; $i++) {
+        for ($i = 1; $i <= 20; $i++) {
             DB::table('images')->insert([
-                'name' => 'image'.$i,
+                'name' => 'image' . $i,
                 'path' => $faker->imageUrl(),
                 'product_id' => $faker->numberBetween(1, 50),
                 'is_thumbnail' => $faker->numberBetween(0, 1),

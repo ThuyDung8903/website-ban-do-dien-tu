@@ -17,7 +17,7 @@ class ReviewSeeder extends Seeder
         $customers = Customer::all();
 
         foreach ($products as $product) {
-            for ($i = 0; $i < 5; $i++) {
+            for ($i = 1; $i <= 5; $i++) {
                 $customer = $customers->random();
                 $rating = $faker->numberBetween(1, 5);
                 Review::create([

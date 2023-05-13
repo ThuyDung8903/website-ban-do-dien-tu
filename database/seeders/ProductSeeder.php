@@ -20,8 +20,8 @@ class ProductSeeder extends Seeder
 
         for ($i = 1; $i <= 100; $i++) {
             DB::table('products')->insert([
-                'name' => 'Product '.$i,
-                'price' => $faker->numberBetween(100, 10000),
+                'name' => 'Product ' . $i,
+                'price' => $price,
                 'sale_price' => $faker->numberBetween(0, $price),
                 'category_id' => $faker->numberBetween(1, 20),
                 'brand_id' => $faker->numberBetween(1, 10),
@@ -29,7 +29,7 @@ class ProductSeeder extends Seeder
                 'detail_description' => $faker->text(500),
                 'view' => $faker->numberBetween(100, 1000),
                 'total_sold' => $faker->numberBetween(1, 1000),
-                'status' => $faker->randomElement([0,1]),
+                'status' => $faker->randomElement([0, 1]),
                 'created_at' => now(),
                 'updated_at' => now()
             ]);

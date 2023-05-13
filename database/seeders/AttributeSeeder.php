@@ -12,9 +12,9 @@ class AttributeSeeder extends Seeder
     {
         $faker = Faker::create();
 
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 1; $i <= 10; $i++) {
             Attribute::create([
-                'name' => 'Attribute '.$i,
+                'name' => 'Attribute ' . $i,
                 'status' => $faker->numberBetween(0, 1),
                 'created_at' => now(),
                 'updated_at' => now(),

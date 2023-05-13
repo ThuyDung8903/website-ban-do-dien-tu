@@ -17,9 +17,9 @@ class CategorySeeder extends Seeder
     {
         $faker = Faker::create();
 
-        for ($i = 0; $i < 20; $i++) {
+        for ($i = 1; $i <= 20; $i++) {
             DB::table('categories')->insert([
-                'name' => 'Category '. $i,
+                'name' => 'Category ' . $i,
                 'parent_id' => $faker->randomFloat(null, 1, 10),
                 'status' => $faker->randomElement([0, 1]),
                 'created_at' => now(),

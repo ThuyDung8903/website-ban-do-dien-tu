@@ -19,7 +19,7 @@ class OrderSeeder extends Seeder
         $faker = FakerFactory::create();
 
         // Tạo 20 đơn hàng mẫu
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 1; $i <= 10; $i++) {
             DB::table('orders')->insert([
                 'customer_id' => $faker->numberBetween(1, 10),
                 'shipping_method_id' => $faker->numberBetween(1, 5),

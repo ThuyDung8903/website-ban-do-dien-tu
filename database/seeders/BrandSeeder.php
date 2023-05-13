@@ -19,7 +19,7 @@ class BrandSeeder extends Seeder
 
         for ($i = 1; $i <= 10; $i++) {
             DB::table('brands')->insert([
-                'name' => 'Brand '.$i,
+                'name' => 'Brand ' . $i,
                 'image' => $faker->imageUrl(),
                 'status' => $faker->randomElement([0, 1]),
                 'created_at' => now(),

@@ -18,9 +18,9 @@ class BannerSeeder extends Seeder
         $faker = Faker::create();
 
         // Tạo 20 bản ghi mẫu cho bảng "banners"
-        for ($i = 0; $i < 20; $i++) {
+        for ($i = 1; $i <= 10; $i++) {
             DB::table('banners')->insert([
-                'name' => 'Banner '.$i,
+                'name' => 'Banner ' . $i,
                 'image' => $faker->imageUrl(),
                 'created_at' => now(),
                 'updated_at' => now(),

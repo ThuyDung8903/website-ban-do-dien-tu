@@ -18,9 +18,9 @@ class ShippingMethodSeeder extends Seeder
     {
         $faker = Faker::create();
 
-        for ($i=0; $i < 5; $i++) {
+        for ($i = 1; $i <= 5; $i++) {
             DB::table('shipping_methods')->insert([
-                'name' => 'Shipping_method '.$i,
+                'name' => 'Shipping_method ' . $i,
                 'shipping_fee' => $faker->randomElement([5, 10, 15]),
                 'status' => 1,
                 'created_at' => now(),

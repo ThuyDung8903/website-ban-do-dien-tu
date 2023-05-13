@@ -16,8 +16,8 @@ class OrderDetailSeeder extends Seeder
      */
     public function run()
     {
-        Order::all()->each(function($order) {
-            Product::all()->random(3)->each(function($product) use($order) {
+        Order::all()->each(function ($order) {
+            Product::all()->random(3)->each(function ($product) use ($order) {
                 $orderDetail = new OrderDetail();
                 $orderDetail->order_id = $order->id;
                 $orderDetail->product_id = $product->id;

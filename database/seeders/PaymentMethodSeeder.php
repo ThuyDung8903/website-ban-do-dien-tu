@@ -20,7 +20,7 @@ class PaymentMethodSeeder extends Seeder
         // Generate 5 sample payment methods
         for ($i = 1; $i <= 5; $i++) {
             PaymentMethod::create([
-                'name' => 'Payment Method '.$i,
+                'name' => 'Payment Method ' . $i,
                 'status' => 1,
             ]);
         }

@@ -30,6 +30,11 @@ return new class extends Migration
             $table->tinyInteger('status')->default(1);
             $table->timestamps();
 //            $table->foreign('sale_price')->references('price')->on('products')->whereColumn('sale_price', '<', 'price');
+
+//            $table->foreign('sale_price')
+//                ->references('price')
+//                ->on('products')
+//                ->whereRaw('sale_price < price');
         });
     }
 
@@ -44,6 +49,7 @@ return new class extends Migration
             $table->dropForeign('products_category_id_foreign');
             $table->dropForeign('products_brand_id_foreign');
 //            $table->dropForeign('products_sale_price_foreign');
+
         });
         Schema::dropIfExists('products');
     }
