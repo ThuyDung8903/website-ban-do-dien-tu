@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Product;
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
 use Illuminate\Support\Facades\DB;
@@ -11,14 +12,18 @@ class ImageSeeder extends Seeder
     public function run()
     {
         $faker = Faker::create();
+        $products = Product::all();
 
-        for ($i = 1; $i <= 20; $i++) {
-            DB::table('images')->insert([
-                'name' => 'image' . $i,
-                'path' => $faker->imageUrl(),
-                'product_id' => $faker->numberBetween(1, 50),
-                'is_thumbnail' => $faker->numberBetween(0, 1),
-            ]);
-        }
+            foreach ($products as $product){
+                for ($i = 1; $i <= 5; $i++) {
+                    $is_thumbnail = $i == 1? 1 : 0;
+                    DB::table('images')->insert([
+                        'name' => 'image_' . $product->id. $i,
+                        'path' => $faker->imageUrl(),
+                        'product_id' => $product->id,
+                        'is_thumbnail' => $is_thumbnail,
+                    ]);
+                }
+            }
     }
 }

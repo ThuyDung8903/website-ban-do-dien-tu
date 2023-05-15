@@ -23,7 +23,10 @@ class FrontendController extends Controller
     {
         $category = Category::where('slug', $category_slug)->first();
         if($category) {
-            $products = $category->products()->get();
+            $products = $category->products()
+                ->join('brands', 'brand_id', '=', 'brands.id')
+                ->select('brands.name as brand_name', 'products.*')
+                ->get();
             return view('frontend.collections.products.index', compact('products', 'category'));
         } else {
             return redirect()->back();
