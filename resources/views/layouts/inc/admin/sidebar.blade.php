@@ -30,7 +30,7 @@
                 <!-- Sidenav Heading (Applications)-->
                 <div class="sidenav-menu-heading">Applications</div>
                 <!-- Sidenav Accordion (Profile)-->
-                <a class="nav-link" href="account-profile.html">
+                <a class="nav-link" href="{{ route('admin.account-profile') }}">
                     <div class="nav-link-icon"><i data-feather="user"></i></div>
                     My profile
                 </a>
