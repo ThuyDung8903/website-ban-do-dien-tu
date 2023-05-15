@@ -28,6 +28,10 @@ Route::prefix('/admin')->group(function () {
 //    return view('welcome');
 //});
 
-// Include routes for front end
-require_once('fe.php');
+Auth::routes();
+
+Route::get('/', [App\Http\Controllers\Frontend\FrontendController::class, 'index']);
+Route::get('/collections', [App\Http\Controllers\Frontend\FrontendController::class, 'categories']);
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
