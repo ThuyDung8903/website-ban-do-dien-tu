@@ -17,7 +17,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h4 class="mb-4">Our Products</h4>
+                    <h4 class="mb-4">List Products in {{ $category->name }}</h4>
                 </div>
 
                 @forelse($products as $productItem)
