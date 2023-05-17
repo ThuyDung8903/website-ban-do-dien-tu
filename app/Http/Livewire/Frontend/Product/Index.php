@@ -8,9 +8,10 @@ use Livewire\Component;
 
 class Index extends Component
 {
-    public $products, $category, $brandInputs = [];
+    public $products, $category, $brandInputs = [], $priceInput;
     protected $queryString = [
         'brandInputs' => ['except' => '', 'as' => 'brand'],
+        'priceInput' => ['except' => '', 'as' => 'price'],
     ];
 
     public function mount($category)
@@ -25,6 +26,14 @@ class Index extends Component
             ->select('brands.name as brand_name', 'products.*')
             ->when($this->brandInputs, function ($q) {
                 $q->whereIn('brand_id', $this->brandInputs);
+            })
+            ->when($this->priceInput, function ($q) {
+                $q->when($this->priceInput == 'low-to-high', function ($q2) {
+                    $q2->orderBy('sale_price', 'asc');
+                })
+                ->when($this->priceInput == 'high-to-low', function ($q2) {
+                    $q2->orderBy('sale_price', 'desc');
+                });
             })
             ->get();
         $this->brands = $this->category->brands()->distinct()->orderBy('name')->get();

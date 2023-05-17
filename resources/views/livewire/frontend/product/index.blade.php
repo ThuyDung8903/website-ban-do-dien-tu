@@ -13,10 +13,28 @@
                                        wire:model="brandInputs"> {{ $brand->name }}
                             </label>
                         @endforeach
-                        <button wire:click="$set('brandInputs', [])">Clear</button>
+                        <button class="btn btn-outline-danger" wire:click="$set('brandInputs', [])">< Clear</button>
                     </div>
                 </div>
             @endif
+{{--            Filter by price--}}
+                <div class="card mt-3">
+                    <div class="card-header">
+                        <h4>Price</h4>
+                    </div>
+                    <div class="card-body">
+                            <label class="d-block">
+                                <input type="radio" name="priceSort"
+                                       wire:model="priceInput" value="low-to-high"> Low to High
+                            </label>
+                        <label class="d-block">
+                            <input type="radio" name="priceSort"
+                                   wire:model="priceInput" value="high-to-low"> High to Low
+                        </label>
+                        <button class="btn btn-outline-danger" wire:click="$set('priceInput', '')">< Clear</button>
+                    </div>
+                </div>
+{{--            End Filter by price --}}
         </div>
         <div class="col-md-9">
             <div class="row">
