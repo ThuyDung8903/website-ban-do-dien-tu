@@ -20,7 +20,7 @@
                     <h4 class="mb-4">List Products in {{ $category->name }}</h4>
                 </div>
 
-                <livewire:frontend.product.index :products="$products" :category="$category"/>
+                <livewire:frontend.product.index :category="$category"/>
                 {{--                <div class="col-md-3">--}}
                 {{--                    <div class="product-card">--}}
                 {{--                        <div class="product-card-img">--}}
