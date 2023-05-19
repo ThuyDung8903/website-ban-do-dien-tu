@@ -18,6 +18,6 @@ class AttributeValue extends Model
 
     public function attributes()
     {
-        $this->hasOne(Attribute::class, 'id', 'attribute_value');
+        return $this->hasOne(Attribute::class, 'id', 'attribute_value');
     }
 }

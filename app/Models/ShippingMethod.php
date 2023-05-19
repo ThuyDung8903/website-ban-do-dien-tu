@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class ShippingMethod extends Model
 {
     use HasFactory;
+
     protected $table = 'shipping_methods';
     protected $fillable = [
         'name',
@@ -17,6 +18,6 @@ class ShippingMethod extends Model
 
     public function orders()
     {
-        $this->hasMany(Order::class, 'order_id', 'id');
+        return $this->hasMany(Order::class, 'order_id', 'id');
     }
 }

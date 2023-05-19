@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,10 +21,6 @@ Route::get('/', function () {
 require_once __DIR__ . '/auth.php';
 require_once __DIR__ . '/be.php';
 
-Auth::routes();
 
-Route::get('/', [App\Http\Controllers\Frontend\FrontendController::class, 'index'])->name('home');
-Route::get('/collections', [App\Http\Controllers\Frontend\FrontendController::class, 'categories']);
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);
-
+// Include routes for front end
+require_once __DIR__ . '/fe.php';

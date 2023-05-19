@@ -30,7 +30,7 @@
                 <!-- Sidenav Heading (Applications)-->
                 <div class="sidenav-menu-heading">Applications</div>
                 <!-- Sidenav Accordion (Profile)-->
-                <a class="nav-link" href="{{ route('admin.account-profile') }}">
+                <a class="nav-link" href="{{ route('admin.account.profile') }}">
                     <div class="nav-link-icon"><i data-feather="user"></i></div>
                     My profile
                 </a>
@@ -61,12 +61,31 @@
                     <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavAppsMenu">
                         <!-- Nested Sidenav Accordion (Ecommerce -> Product Management)-->
                         <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse"
-                                data-bs-target="#appsCollapseProductManagement" aria-expanded="false"
-                                aria-controls="appsCollapseProductManagement">
-                            Product Management
+                                data-bs-target="#appsCollapseCategory" aria-expanded="false"
+                                aria-controls="appsCollapseCategory">
+                            Category
                             <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                         </a>
-                        <div class="collapse" id="appsCollapseProductManagement"
+                        <div class="collapse" id="appsCollapseCategory"
+                                data-bs-parent="#accordionSidenavAppsMenu">
+                            <nav class="sidenav-menu-nested nav">
+                                <a class="nav-link" href="{{ route('admin.category.list') }}">Categories list</a>
+                                <a class="nav-link" href="user-management-edit-user.html">Edit category</a>
+                                <a class="nav-link" href="{{ route('admin.category.add') }}">Add category</a>
+                            </nav>
+                        </div>
+                    </nav>
+                </div>
+                <div class="collapse" id="collapseEcommerce" data-bs-parent="#accordionSidenav">
+                    <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavAppsMenu">
+                        <!-- Nested Sidenav Accordion (Ecommerce -> Product Management)-->
+                        <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse"
+                                data-bs-target="#appsCollapseProduct" aria-expanded="false"
+                                aria-controls="appsCollapseProduct">
+                            Product
+                            <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="appsCollapseProduct"
                                 data-bs-parent="#accordionSidenavAppsMenu">
                             <nav class="sidenav-menu-nested nav">
                                 <a class="nav-link" href="user-management-list.html">Products List</a>

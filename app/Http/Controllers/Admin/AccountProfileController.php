@@ -11,6 +11,6 @@ class AccountProfileController extends Controller
     public function index()
     {
         $user = User::find(Auth::guard()->user()->id);
-        return view('admin.account-profile', compact('user'));
+        return view('admin.account.profile', compact('user'));
     }
 }

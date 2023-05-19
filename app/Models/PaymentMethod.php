@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class PaymentMethod extends Model
 {
     use HasFactory;
+
     protected $table = 'payment_methods';
     protected $fillable = [
         'name',
@@ -16,6 +17,6 @@ class PaymentMethod extends Model
 
     public function orders()
     {
-        $this->hasMany(Order::class, 'order_id', 'id');
+        return $this->hasMany(Order::class, 'order_id', 'id');
     }
 }

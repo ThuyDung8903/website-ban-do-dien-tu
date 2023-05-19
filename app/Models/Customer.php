@@ -2,12 +2,16 @@
 
 namespace App\Models;
 
+use Illuminate\Auth\Authenticatable as AuthenticableTrait;
+use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Customer extends Model
+class Customer extends Model implements Authenticatable
 {
     use HasFactory;
+    use AuthenticableTrait;
+
     protected $table = 'customers';
     protected $fillable = [
         'username',
@@ -35,12 +39,13 @@ class Customer extends Model
         'email_verified_at' => 'datetime',
     ];
 
-    public function orders(){
-        $this->hasMany(Order::class, 'customer_id', 'id');
+    public function orders()
+    {
+        return $this->hasMany(Order::class, 'customer_id', 'id');
     }
 
     public function reviews()
     {
-        $this->hasMany(Review::class, 'customer_id', 'id');
+        return $this->hasMany(Review::class, 'customer_id', 'id');
     }
 }

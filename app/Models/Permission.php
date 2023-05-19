@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Permission extends Model
 {
     use HasFactory;
+
     protected $table = 'permissions';
     protected $fillable = [
         'permission',
@@ -19,6 +20,6 @@ class Permission extends Model
 
     public function users()
     {
-        $this->hasOne(User::class, 'id', 'user_id');
+        return $this->hasOne(User::class, 'id', 'user_id');
     }
 }

@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class OrderDetail extends Model
 {
     use HasFactory;
+
     protected $table = 'order_details';
     protected $fillable = [
         'order_id',
@@ -17,10 +18,11 @@ class OrderDetail extends Model
 
     public function orders()
     {
-        $this->hasOne(Order::class, 'id', 'order_id');
+        return $this->hasOne(Order::class, 'id', 'order_id');
     }
+
     public function products()
     {
-        $this->hasOne(Product::class, 'id', 'product_id');
+        return $this->hasOne(Product::class, 'id', 'product_id');
     }
 }
