@@ -15,11 +15,6 @@
                     <div class="product-view">
                         <h4 class="product-name">
                             {{ $product->name }}
-                            @if ($product->quantity > 0)
-                                <label class="label-stock bg-success">In Stock</label>
-                            @else
-                                <label class="label-stock bg-warning">Out of Stock</label>
-                            @endif
                         </h4>
                         <hr>
                         <p class="product-path">
@@ -28,6 +23,13 @@
                         <div>
                             <span class="selling-price">${{ $product->sale_price }}</span>
                             <span class="original-price">${{ $product->price }}</span>
+                        </div>
+                        <div>
+                            @if ($product->quantity > 0)
+                                <label class="btn-sm py-1 mt-2 text-white bg-success">In Stock</label>
+                            @else
+                                <label class="btn-sm py-1 mt-2 text-white bg-danger">Out of Stock</label>
+                            @endif
                         </div>
                         <div class="mt-2">
                             <div class="input-group">

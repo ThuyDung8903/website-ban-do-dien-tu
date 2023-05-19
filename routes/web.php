@@ -14,24 +14,8 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+require_once __DIR__.'/auth.php';
+require_once __DIR__.'/be.php';
+require_once __DIR__.'/fe.php';
 
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::prefix('/admin')->group(function () {
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
-});
-
-//Route::get('/', function () {
-//    return view('welcome');
-//});
-
-Auth::routes();
-
-Route::get('/', [App\Http\Controllers\Frontend\FrontendController::class, 'index']);
-Route::get('/collections', [App\Http\Controllers\Frontend\FrontendController::class, 'categories']);
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

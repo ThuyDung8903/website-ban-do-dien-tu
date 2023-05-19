@@ -1,5 +1,6 @@
 <div>
     <div class="row">
+        @if(count($products) !== 0)
         <div class="col-md-3">
             @if($brands)
                 <div class="card">
@@ -13,7 +14,7 @@
                                        wire:model="brandInputs"> {{ $brand->name }}
                             </label>
                         @endforeach
-                        <button class="btn btn-outline-danger" wire:click="$set('brandInputs', [])">< Clear</button>
+                        <button class="btn btn-outline-dark btn-sm" wire:click="$set('brandInputs', [])"><i class="fa fa-times"></i> Clear</button>
                     </div>
                 </div>
             @endif
@@ -31,11 +32,12 @@
                             <input type="radio" name="priceSort"
                                    wire:model="priceInput" value="high-to-low"> High to Low
                         </label>
-                        <button class="btn btn-outline-danger" wire:click="$set('priceInput', '')">< Clear</button>
+                        <button class="btn btn-outline-dark btn-sm" wire:click="$set('priceInput', '')"><i class="fa fa-times"></i> Clear</button>
                     </div>
                 </div>
 {{--            End Filter by price --}}
         </div>
+        @endif
         <div class="col-md-9">
             <div class="row">
                 @forelse($products as $productItem)
@@ -45,7 +47,7 @@
                                 @if ($productItem->quantity > 0)
                                     <label class="stock bg-success">In Stock</label>
                                 @else
-                                    <label class="stock bg-warning">Out of Stock</label>
+                                    <label class="stock bg-danger">Out of Stock</label>
                                 @endif
 
                                 @if ($productItem->images->count() > 0)
