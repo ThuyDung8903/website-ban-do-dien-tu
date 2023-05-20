@@ -1,6 +1,27 @@
 <div>
     <div class="py-3 py-md-5">
         <div class="container">
+            @if(session()->has('message'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{ session('message') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @elseif(session()->has('error'))
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    {{ session('error') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @elseif(session()->has('success'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{ session('success') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @elseif(session()->has('warning'))
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    {{ session('warning') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
             <div class="row">
                 <div class="col-md-5 mt-3">
                     <div class="bg-white border">
@@ -40,7 +61,14 @@
                         </div>
                         <div class="mt-2">
                             <a href="" class="btn btn1"> <i class="fa fa-shopping-cart"></i> Add To Cart</a>
-                            <a href="" class="btn btn1"> <i class="fa fa-heart"></i> Add To Wishlist </a>
+                            <button type="button" wire:click="addToWishList({{ $product->id }})" class="btn btn1">
+                                <span wire:loading.remove>
+                                    <i class="fa fa-heart"></i> Add To Wishlist
+                                </span>
+                                <span wire:loading wire:target="addToWishList">
+                                    <i class="fa fa-spinner fa-spin"></i> Adding To Wishlist...
+                                </span>
+                            </button>
                         </div>
                         <div class="mt-3">
                             <h5 class="mb-0">Short Description</h5>
