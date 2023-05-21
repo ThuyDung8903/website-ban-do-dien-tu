@@ -22,13 +22,28 @@ class View extends Component
                     'user_id' => $userId,
                     'product_id' => $productId,
                 ]);
-                session()->flash('success', 'Added to wishlist successfully');
+                //session()->flash('success', 'Added to wishlist successfully');
+                $this->dispatchBrowserEvent('message', [
+                    'type' => 'success',
+                    'message' => 'Added to wishlist successfully',
+                    'status' => 200
+                ]);
             } else {
-                session()->flash('message', 'Product already added to wishlist');
+                //session()->flash('message', 'Already added to wishlist');
+                $this->dispatchBrowserEvent('message', [
+                    'type' => 'warning',
+                    'message' => 'Already added to wishlist',
+                    'status' => 200
+                ]);
                 return false;
             }
         } else {
-            session()->flash('error', 'Please login to add product to wishlist');
+            //session()->flash('error', 'Please login to add product to wishlist');
+            $this->dispatchBrowserEvent('message', [
+                'type' => 'info',
+                'message' => 'Please login to add product to wishlist',
+                'status' => 401
+            ]);
             //return redirect()->route('customer.login');
             return false;
         }
