@@ -12,6 +12,7 @@ class WishlistShow extends Component
     {
         $wishlist = Wishlist::findOrFail($id);
         $wishlist->delete();
+        $this->emit('wishlistCountUpdated');
         session()->flash('success', 'Item removed from wishlist successfully.');
         $this->dispatchBrowserEvent('message', [
             'type' => 'success',
