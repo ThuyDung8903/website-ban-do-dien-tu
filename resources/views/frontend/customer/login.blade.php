@@ -6,10 +6,10 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+                <div class="card-header">{{ __('Login for customer') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('customer.login') }}">
+                    <form method="POST" action="{{ route('customer.login.submit') }}">
                         @csrf
 
                         @if(session('error'))
@@ -64,8 +64,8 @@
                                     {{ __('Login') }}
                                 </button>
 
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
+                                @if (Route::has('customer.password.request'))
+                                    <a class="btn btn-link" href="{{ route('customer.password.request') }}">
                                         {{ __('Forgot Your Password?') }}
                                     </a>
                                 @endif

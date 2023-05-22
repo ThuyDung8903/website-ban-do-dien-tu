@@ -17,15 +17,23 @@ class CustomerAuthController extends Controller
 
     public function login(Request $request)
     {
+        // Validate login form data
+        $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required'],
+        ]);
+
         $credentials = $request->only('email', 'password');
 
-        if (Auth::guard('customer')->attempt($credentials)) {
+        if (Auth::guard('customer')->attempt($credentials, $request->remember)) {
             // Login successfully
             return redirect()->intended(route('homepage'));
         } else {
             // Login failed
-            session()->flash('error', 'Invalid login credentials');
-            return redirect()->back()->withInput($request->only('email'));
+            session()->flash('error', 'Invalid login credentials! Please try again.');
+            return redirect()->back()->withInput($request->only('email', 'remember'))->withErrors([
+                'email' => 'The provided credentials do not match our records.',
+            ]);
         }
     }
 
@@ -38,7 +46,7 @@ class CustomerAuthController extends Controller
     {
         // Validate registration form data
         $request->validate([
-            'username' => ['required', 'unique:users', 'min:6', 'max:255', 'alpha_num'],
+            'username' => ['required', 'unique:customers', 'min:6', 'max:255', 'alpha_num'],
             'email' => ['required', 'email', 'max:255', 'unique:customers'],
             'password' => ['required', 'confirmed', 'min:8'],
         ]);
@@ -55,6 +63,63 @@ class CustomerAuthController extends Controller
 
         // Redirect to homepage
         return redirect()->route('homepage');
+    }
+
+    public function showLinkRequestForm()
+    {
+        return view('frontend.customer.reset-password');
+    }
+
+    public function reset(Request $request)
+    {
+        // Validate reset password form data
+        $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required', 'confirmed', 'min:8'],
+        ]);
+
+        $customer = Customer::where('email', $request->email)->first();
+
+        if ($customer) {
+            $customer->password = Hash::make($request->password);
+            $customer->save();
+
+            // Login after reset password
+            Auth::guard('customer')->login($customer);
+
+            // Redirect to homepage
+            return redirect()->route('homepage');
+        } else {
+            session()->flash('error', 'Invalid email! Please try again.');
+            return redirect()->back();
+        }
+    }
+
+    public function sendResetLinkEmail(Request $request)
+    {
+        // Validate send reset password link form data
+        $request->validate([
+            'email' => ['required', 'email'],
+        ]);
+
+        $customer = Customer::where('email', $request->email)->first();
+
+        if ($customer) {
+            // Send reset password link
+            $customer->sendPasswordResetNotification($customer->createToken('password_reset')->plainTextToken);
+
+            session()->flash('success', 'Reset password link sent on your email id.');
+            return redirect()->back();
+        } else {
+            session()->flash('error', 'Invalid email! Please try again.');
+            return redirect()->back();
+        }
+    }
+
+    public function showResetPasswordForm(Request $request)
+    {
+        $token = $request->token;
+        return view('frontend.customer.reset-password-form', compact('token'));
     }
 
     //logout function
