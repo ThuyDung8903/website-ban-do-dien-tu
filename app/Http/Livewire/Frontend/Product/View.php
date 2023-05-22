@@ -75,7 +75,7 @@ class View extends Component
     {
         if (Auth::guard('customer')->check()) {
             //dd($productId);
-            if($this->product->where('id', $productId)->where('status', '0')->exists()) {
+            if($this->product->where('id', $productId)->where('status', '1')->exists()) {
                 //if product quantity is greater than 0: means product is In Stock
                 if($this->product->quantity > 0) {
                     //if product quantity is less than quantityCount, not add to cart
