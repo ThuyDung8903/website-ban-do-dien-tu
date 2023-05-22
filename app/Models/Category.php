@@ -25,4 +25,10 @@ class Category extends Model
     {
         return $this->hasMany(Product::class, 'category_id', 'id');
     }
+
+    //function brands() get all brand of products in a category
+    public function brands()
+    {
+        return $this->hasManyThrough(Brand::class, Product::class, 'category_id', 'id', 'id', 'brand_id');
+    }
 }

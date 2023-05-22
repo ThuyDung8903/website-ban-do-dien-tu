@@ -23,7 +23,8 @@ return new class extends Migration
             $table->string('phone', 10)->nullable();
             $table->string('address')->nullable();
             $table->string('avatar')->nullable();
-            $table->string('role');
+            $table->enum('role', ['Shop-assistant', 'Accountant', 'Manager', 'Shopkeeper'])->default('Shopkeeper');
+            $table->date('joined_time')->useCurrent();
             $table->tinyInteger('status')->default(1);
             $table->rememberToken();
             $table->timestamps();

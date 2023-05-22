@@ -29,6 +29,28 @@
             <a class="nav-link" href="account-security.html">Security</a>
         </nav>
         <hr class="mt-0 mb-4">
+        @if ($errors->any())
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <h5 class="alert-heading">Alert!</h5>
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+                <button class="btn-close" type="button" data-bs-dismiss="alert"
+                        aria-label="Close" aria-hidden="true"></button>
+            </div>
+        @endif
+        @if(session('success'))
+            <div style="position: absolute; top: 1rem; right: 1rem;">
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <h5 class="alert-heading">Alert!</h5>
+                    {{ session('success') }}
+                    <button class="btn-close" type="button" data-bs-dismiss="alert"
+                            aria-label="Close" aria-hidden="true"></button>
+                </div>
+            </div>
+        @endif
         <div class="row">
             <div class="col-xl-4">
                 <!-- Profile picture card-->
@@ -37,16 +59,19 @@
                     <div class="card-body text-center">
                         <!-- Profile picture image-->
                         <img class="img-account-profile rounded-circle mb-2"
-                                src="{{ $user->avatar }}" alt="{{ 'avatar-'.$user->username }}" style="width: 160px; height: 160px" >
+                                src="{{ $user->avatar }}" alt="{{ 'avatar-'.$user->username }}"
+                                style="width: 160px; height: 160px">
                         <!-- Profile picture help block-->
                         <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
                         <!-- Profile picture upload button-->
-                        <form action="#" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('admin.account.upload-avatar') }}" method="POST"
+                                enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
-                                <input type="file" name="image" accept="image/*" >
+                                <input class="form-control" type="file" name="avatar" id="avatar">
+                                <br>
                             </div>
-                            <button type="submit" class="btn btn-primary">Upload new image</button>
+                            <button type="submit" class="btn btn-primary">Upload new avatar</button>
                         </form>
 
                     </div>
@@ -57,31 +82,33 @@
                 <div class="card mb-4">
                     <div class="card-header">Account Details</div>
                     <div class="card-body">
-                        <form>
+                        <form action="{{ route('admin.account.do-edit-user', ['id' => $user->id]) }}" method="post"
+                                enctype="multipart/form-data">
+                            @csrf
                             <!-- Form Group (username)-->
                             <div class="mb-3">
                                 <label class="small mb-1"
                                         for="inputUsername">Username (how your name will appear to other users on the site)</label>
-                                <input class="form-control" id="inputUsername" type="text"
+                                <input class="form-control" id="inputUsername" name="username" type="text"
                                         placeholder="Enter your username" value="{{ $user->username }}">
                             </div>
                             <!-- Form Group (fullname)-->
                             <div class="mb-3">
                                 <label class="small mb-1"
                                         for="inputFullname">Fullname</label>
-                                <input class="form-control" id="inputFullname" type="text"
+                                <input class="form-control" id="inputFullname" name="fullname" type="text"
                                         placeholder="Enter your fullname" value="{{ $user->fullname }}">
                             </div>
                             <!-- Form Group (email address)-->
                             <div class="mb-3">
                                 <label class="small mb-1" for="inputEmailAddress">Email address</label>
-                                <input class="form-control" id="inputEmailAddress" type="email"
+                                <input class="form-control" id="inputEmailAddress" name="email" type="email"
                                         placeholder="Enter your email address" value="{{ $user->email }}">
                             </div>
                             <!-- Form Group (address)-->
                             <div class="mb-3">
                                 <label class="small mb-1" for="inputAddress">Address</label>
-                                <input class="form-control" id="inputAddress" type="text"
+                                <input class="form-control" id="inputAddress" name="address" type="text"
                                         placeholder="Enter your address" value="{{ $user->address }}">
                             </div>
                             <!-- Form Row-->
@@ -89,7 +116,7 @@
                                 <!-- Form Group (phone number)-->
                                 <div class="col-md-6">
                                     <label class="small mb-1" for="inputPhone">Phone number</label>
-                                    <input class="form-control" id="inputPhone" type="tel"
+                                    <input class="form-control" id="inputPhone" name="phone" type="tel"
                                             placeholder="Enter your phone number" value="{{ $user->phone }}">
                                 </div>
                                 <!-- Form Group (role)-->
@@ -100,7 +127,7 @@
                                 </div>
                             </div>
                             <!-- Save changes button-->
-                            <button class="btn btn-primary" type="button">Save changes</button>
+                            <button class="btn btn-primary" type="submit">Save changes</button>
                         </form>
                     </div>
                 </div>

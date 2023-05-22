@@ -19,7 +19,7 @@
                                             @endif
                                             <div class="category-card-img">
                                                 <img src="{{ $categoryItem->image }}" class="w-100"
-                                                     alt="Mobile Devices">
+                                                     alt="{{ $categoryItem->slug }}">
                                             </div>
                                             <div class="category-card-body">
                                                 <h5>{{ $categoryItem->name }}</h5>

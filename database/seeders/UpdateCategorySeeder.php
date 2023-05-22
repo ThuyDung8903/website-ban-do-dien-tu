@@ -21,6 +21,7 @@ class UpdateCategorySeeder extends Seeder
         foreach ($categories as $category){
             $category->description = $faker->sentence(8);
             $category->update([
+                'slug' => Str::slug($category->name),
                 'description' => $category->description,
                 'meta_title' => Str::title($category->name),
                 'meta_keywords' => Str::slug($faker->sentence(5), ', '),

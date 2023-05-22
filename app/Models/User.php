@@ -27,6 +27,7 @@ class User extends Authenticatable
         'address',
         'avatar',
         'role',
+        'joined_time',
         'status'
     ];
 

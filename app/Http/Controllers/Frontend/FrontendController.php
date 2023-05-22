@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Brand;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
@@ -21,28 +22,27 @@ class FrontendController extends Controller
 
     public function products($category_slug)
     {
-        $category = Category::where('slug', $category_slug)->first();
-        if($category) {
-            $products = $category->products()
-                ->join('brands', 'brand_id', '=', 'brands.id')
-                ->select('brands.name as brand_name', 'products.*')
-                ->get();
-            return view('frontend.collections.products.index', compact('products', 'category'));
+        $category = Category::where('slug', $category_slug)->where('status', '1')->first();
+        if ($category) {
+            return view('frontend.collections.products.index', compact('category'));
         } else {
             return redirect()->back();
         }
     }
 
-    public function productsByCategoryId($id)
+    public function productView(string $category_slug, string $product_slug)
     {
-        $category = Category::where('id', $id);
-        if($category) {
-            $products = $category->products()->get();
-            return view('frontend.collections.products.index', compact('products', 'category'));
+        $category = Category::where('slug', $category_slug)->where('status', '1')->first();
+        if ($category) {
+            $product = $category->products()->where('slug', $product_slug)->first();
+            if ($product) {
+                return view('frontend.collections.products.view', compact('category', 'product'));
+            } else {
+                return redirect()->back();
+            }
+            return view('frontend.collections.product.view', compact('category', 'product'));
         } else {
             return redirect()->back();
         }
     }
-
-
 }

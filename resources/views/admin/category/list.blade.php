@@ -8,7 +8,7 @@
                     <div class="col-auto mt-4">
                         <h1 class="page-header-title">
                             <div class="page-header-icon"><i data-feather="filter"></i></div>
-                            Categories
+                            Category
                         </h1>
                     </div>
                 </div>
@@ -17,10 +17,16 @@
     </header>
     <!-- Main page content-->
     <div class="container-xl px-4 mt-n10">
-        <div class="card mb-5">
-            <div class="card-header">Extended DataTables</div>
+        <div class="card mb-4">
+            <div class="card-header d-flex bd-highlight justify-content-md-between">
+                <div class="p-2 bd-highlight">Extended DataTables</div>
+                <a href="{{ route('admin.category.add') }}"
+                        class="btn btn-blue text-white p-2 flex-shrink-1 bd-highlight">Add category <i
+                            data-feather="plus-circle" class="fs-5"></i></a>
+            </div>
+
             <div class="card-body">
-                <table id="datatablesSimple">
+                <table id="datatablesSimple" class="table table-hover">
                     <thead>
                     <tr>
                         <th>ID</th>
@@ -39,7 +45,7 @@
                     <tfoot>
                     <tr>
                         <th>ID</th>
-                        <th>Category_name</th>
+                        <th>Name</th>
                         <th>Parent_category</th>
                         <th>Slug</th>
                         <th>Image</th>
@@ -80,8 +86,13 @@
                                 @endif
                             </td>
                             <td>
-                                <a class="btn btn-datatable btn-icon btn-transparent-dark me-2" href="{{ route('admin.dashboard') }}"><i data-feather="edit"></i></a>
-                                <a class="btn btn-datatable btn-icon btn-transparent-dark" href="{{ route('admin.dashboard') }}"><i data-feather="trash-2"></i></a>
+                                <a class="btn btn-datatable btn-icon btn-transparent-dark me-2"
+                                        href="{{ route('admin.category.edit', ['id'=>$category->id]) }}"><i
+                                            data-feather="edit"></i></a>
+                                <a class="btn btn-datatable btn-icon btn-transparent-dark"
+                                        onclick="return confirm('Are you sure?')"
+                                        href="{{ route('admin.category.delete', ['id' => $category->id]) }}"><i
+                                            data-feather="trash-2"></i></a>
                             </td>
                         </tr>
                     @endforeach

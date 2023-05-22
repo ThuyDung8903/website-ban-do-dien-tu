@@ -45,9 +45,8 @@
                 <div class="collapse" id="appsCollapseUserManagement"
                         data-bs-parent="#accordionSidenavAppsMenu">
                     <nav class="sidenav-menu-nested nav">
-                        <a class="nav-link" href="user-management-list.html">Users List</a>
-                        <a class="nav-link" href="user-management-edit-user.html">Edit User</a>
-                        <a class="nav-link" href="user-management-add-user.html">Add User</a>
+                        <a class="nav-link" href="{{ route('admin.user.add') }}">Add User</a>
+                        <a class="nav-link" href="{{ route('admin.user.list') }}">Users List</a>
                     </nav>
                 </div>
                 <!-- Sidenav Accordion (Applications)-->
@@ -61,6 +60,42 @@
                     <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavAppsMenu">
                         <!-- Nested Sidenav Accordion (Ecommerce -> Product Management)-->
                         <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse"
+                                data-bs-target="#appsCollapseBrand" aria-expanded="false"
+                                aria-controls="appsCollapseBrand">
+                            Brand
+                            <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="appsCollapseBrand"
+                                data-bs-parent="#accordionSidenavAppsMenu">
+                            <nav class="sidenav-menu-nested nav">
+                                <a class="nav-link" href="{{ route('admin.brand.add') }}">Add brand</a>
+                                <a class="nav-link" href="{{ route('admin.brand.list') }}">Brands list</a>
+                            </nav>
+                        </div>
+                    </nav>
+                </div>
+                <div class="collapse" id="collapseEcommerce" data-bs-parent="#accordionSidenav">
+                    <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavAppsMenu">
+                        <!-- Nested Sidenav Accordion (Ecommerce -> Product Management)-->
+                        <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse"
+                                data-bs-target="#appsCollapseBanner" aria-expanded="false"
+                                aria-controls="appsCollapseBanner">
+                            Banner
+                            <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="appsCollapseBanner"
+                                data-bs-parent="#accordionSidenavAppsMenu">
+                            <nav class="sidenav-menu-nested nav">
+                                <a class="nav-link" href="{{ route('admin.banner.add') }}">Add banner</a>
+                                <a class="nav-link" href="{{ route('admin.banner.list') }}">Banners list</a>
+                            </nav>
+                        </div>
+                    </nav>
+                </div>
+                <div class="collapse" id="collapseEcommerce" data-bs-parent="#accordionSidenav">
+                    <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavAppsMenu">
+                        <!-- Nested Sidenav Accordion (Ecommerce -> Product Management)-->
+                        <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse"
                                 data-bs-target="#appsCollapseCategory" aria-expanded="false"
                                 aria-controls="appsCollapseCategory">
                             Category
@@ -69,9 +104,8 @@
                         <div class="collapse" id="appsCollapseCategory"
                                 data-bs-parent="#accordionSidenavAppsMenu">
                             <nav class="sidenav-menu-nested nav">
-                                <a class="nav-link" href="{{ route('admin.category.list') }}">Categories list</a>
-                                <a class="nav-link" href="user-management-edit-user.html">Edit category</a>
                                 <a class="nav-link" href="{{ route('admin.category.add') }}">Add category</a>
+                                <a class="nav-link" href="{{ route('admin.category.list') }}">Categories list</a>
                             </nav>
                         </div>
                     </nav>
@@ -91,6 +125,60 @@
                                 <a class="nav-link" href="user-management-list.html">Products List</a>
                                 <a class="nav-link" href="user-management-edit-user.html">Edit Product</a>
                                 <a class="nav-link" href="user-management-add-user.html">Add Product</a>
+                            </nav>
+                        </div>
+                    </nav>
+                </div>
+                <div class="collapse" id="collapseEcommerce" data-bs-parent="#accordionSidenav">
+                    <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavAppsMenu">
+                        <!-- Nested Sidenav Accordion (Ecommerce -> Product Management)-->
+                        <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse"
+                                data-bs-target="#appsCollapsePaymentMethod" aria-expanded="false"
+                                aria-controls="appsCollapsePaymentMethod">
+                            Payment method
+                            <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="appsCollapsePaymentMethod"
+                                data-bs-parent="#accordionSidenavAppsMenu">
+                            <nav class="sidenav-menu-nested nav">
+                                <a class="nav-link" href="{{ route('admin.payment-method.add') }}">Add payment method</a>
+                                <a class="nav-link" href="{{ route('admin.payment-method.list') }}">Payment methods list</a>
+                            </nav>
+                        </div>
+                    </nav>
+                </div>
+                <div class="collapse" id="collapseEcommerce" data-bs-parent="#accordionSidenav">
+                    <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavAppsMenu">
+                        <!-- Nested Sidenav Accordion (Ecommerce -> Product Management)-->
+                        <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse"
+                                data-bs-target="#appsCollapseShippingMethod" aria-expanded="false"
+                                aria-controls="appsCollapseShippingMethod">
+                            Shipping method
+                            <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="appsCollapseShippingMethod"
+                                data-bs-parent="#accordionSidenavAppsMenu">
+                            <nav class="sidenav-menu-nested nav">
+                                <a class="nav-link" href="{{ route('admin.shipping-method.add') }}">Add shipping method</a>
+                                <a class="nav-link" href="{{ route('admin.shipping-method.list') }}">Shipping methods list</a>
+                            </nav>
+                        </div>
+                    </nav>
+                </div>
+                <div class="collapse" id="collapseEcommerce" data-bs-parent="#accordionSidenav">
+                    <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavAppsMenu">
+                        <!-- Nested Sidenav Accordion (Ecommerce -> Product Management)-->
+                        <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse"
+                                data-bs-target="#appsCollapseOrderStatus" aria-expanded="false"
+                                aria-controls="appsCollapseOrderStatus">
+                            Order-status
+                            <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="appsCollapseOrderStatus"
+                                data-bs-parent="#accordionSidenavAppsMenu">
+                            <nav class="sidenav-menu-nested nav">
+                                <a class="nav-link" href="{{ route('admin.order-status.add') }}">Add order-status</a>
+                                <a class="nav-link" href="{{ route('admin.order-status.list') }}">Order-statuses list</a>
                             </nav>
                         </div>
                     </nav>

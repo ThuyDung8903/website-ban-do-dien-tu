@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\DashboardController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,15 +14,6 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
-require_once __DIR__ . '/auth.php';
-require_once __DIR__ . '/be.php';
-
-
-// Include routes for front end
-require_once __DIR__ . '/fe.php';
+require_once __DIR__.'/auth.php';
+require_once __DIR__.'/be.php';
+require_once __DIR__.'/fe.php';

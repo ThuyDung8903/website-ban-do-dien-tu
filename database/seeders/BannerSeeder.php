@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 
+use Faker\Factory as Faker;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Faker\Factory as Faker;
 
 class BannerSeeder extends Seeder
 {
@@ -17,7 +17,7 @@ class BannerSeeder extends Seeder
     {
         $faker = Faker::create();
 
-        // Tạo 20 bản ghi mẫu cho bảng "banners"
+        // Tạo 20 bản ghi mẫu cho bảng "banner"
         for ($i = 1; $i <= 10; $i++) {
             DB::table('banners')->insert([
                 'name' => 'Banner ' . $i,
