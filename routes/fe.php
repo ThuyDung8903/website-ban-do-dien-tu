@@ -39,3 +39,4 @@ Route::get('/collections/{category_slug}', [FrontendController::class, 'products
 Route::get('/collections/{category_slug}/{product_slug}', [FrontendController::class, 'productView'])->name('collection.product.view');
 
 Route::get('/wishlist', [WishlistController::class, 'index'])->middleware('auth.customer');
+Route::get('/cart', [CartController::class, 'index'])->middleware('auth.customer');
