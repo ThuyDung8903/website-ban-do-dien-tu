@@ -8,14 +8,17 @@
 
                     <div class="cart-header d-none d-sm-none d-mb-block d-lg-block">
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-5">
                                 <h4>Products</h4>
                             </div>
-                            <div class="col-md-2">
+                            <div class="col-md-1">
                                 <h4>Price</h4>
                             </div>
                             <div class="col-md-2">
                                 <h4>Quantity</h4>
+                            </div>
+                            <div class="col-md-2">
+                                <h4>Subtotal</h4>
                             </div>
                             <div class="col-md-2">
                                 <h4>Remove</h4>
@@ -27,7 +30,7 @@
                         @if($cartItem->product)
                             <div class="cart-item">
                                 <div class="row">
-                                    <div class="col-md-6 my-auto">
+                                    <div class="col-md-5 my-auto">
                                         <a href="{{ url('collections/'.$cartItem->product->category->slug.'/'.$cartItem->product->slug) }}">
                                             <label class="product-name">
                                                 @if($cartItem->product->images)
@@ -43,7 +46,7 @@
                                             </label>
                                         </a>
                                     </div>
-                                    <div class="col-md-2 my-auto">
+                                    <div class="col-md-1 my-auto">
                                         <label class="price">${{ $cartItem->product->sale_price }}</label>
                                     </div>
                                     <div class="col-md-2 col-7 my-auto">
@@ -60,6 +63,10 @@
                                                         class="fa fa-plus"></i></button>
                                             </div>
                                         </div>
+                                    </div>
+                                    <div class="col-md-2 my-auto">
+                                        <label class="price">${{ $cartItem->product->sale_price * $cartItem->quantity }}</label>
+                                        @php $totalPrice += $cartItem->product->sale_price * $cartItem->quantity @endphp
                                     </div>
                                     <div class="col-md-2 col-5 my-auto">
                                         <div class="remove">
@@ -87,6 +94,21 @@
                         </div>
                     @endforelse
 
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 my-md-auto mt-3">
+                <h5>Continue shopping <a href="{{ url('/collections') }}">Click here</a></h5>
+            </div>
+            <div class="col-md-4 mt-3">
+                <div class="shadow-sm bg-white p-3">
+                    <h5>Total: <span class="float-end">${{ $totalPrice }}</span></h5>
+                    <hr>
+                    <div class="text-center">
+                        <a href="{{ url('/checkout') }}" class="btn btn-warning w-100">Checkout</a>
+                    </div>
                 </div>
             </div>
         </div>
