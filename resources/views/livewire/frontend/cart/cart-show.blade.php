@@ -49,23 +49,29 @@
                                     <div class="col-md-2 col-7 my-auto">
                                         <div class="quantity">
                                             <div class="input-group">
-                                                <span class="btn btn1"
+                                                <button class="btn btn1" wire:loading.attr="disabled"
                                                       wire:click="decreaseQuantity({{ $cartItem->id }})"><i
-                                                        class="fa fa-minus"></i></span>
+                                                        class="fa fa-minus"></i></button>
                                                 <input type="number" value="{{ $cartItem->quantity }}"
                                                        class="input-quantity"/>
-                                                <span class="btn btn1"
+                                                <button
+                                                    class="btn btn1" wire:loading.attr="disabled"
                                                       wire:click="increaseQuantity({{ $cartItem->id }})"><i
-                                                        class="fa fa-plus"></i></span>
+                                                        class="fa fa-plus"></i></button>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-2 col-5 my-auto">
                                         <div class="remove">
-                                            <a href="" class="btn btn-danger btn-sm"
-                                               wire:click.prevent="removeFromCart({{ $cartItem->id }})">
-                                                <i class="fa fa-trash"></i> Remove
-                                            </a>
+                                            <button type="button" class="btn btn-danger btn-sm" wire:loading.attr="disabled"
+                                               wire:click.prevent="removeCartItem({{ $cartItem->id }})">
+                                                <span wire:loading.remove wire:target="removeCartItem({{ $cartItem->id }})">
+                                                    <i class="fa fa-trash"></i> Remove
+                                                </span>
+                                                <span wire:loading wire:target="removeCartItem({{ $cartItem->id }})">
+                                                    <i class="fa fa-spinner fa-spin"></i> Removing...
+                                                </span>
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
