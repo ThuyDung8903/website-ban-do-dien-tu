@@ -21,7 +21,16 @@
                 <!-- Default Bootstrap Form Controls-->
                 <div id="default">
                     <div class="card mb-4">
-                        <div class="card-header">Add a new category</div>
+                        <div class="card-header row align-items-center justify-content-between pt-3">
+                            <div class="col-auto">Add a new category</div>
+                            <div class="col-12 col-xl-auto">
+                                <a class="btn btn-sm btn-outline-blue-soft text-primary"
+                                        href="{{ route('admin.category.list') }}">
+                                    <i class="me-1" data-feather="arrow-left"></i>
+                                    Back to Categories List
+                                </a>
+                            </div>
+                        </div>
                         <div class="card-body">
                             @if($errors->any())
                                 <div class="alert alert-danger alert-dismissible fade show" role="alert">

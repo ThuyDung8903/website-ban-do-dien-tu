@@ -28,6 +28,7 @@ Route::prefix('/admin')->middleware([AdminAccountMiddleware::class])->group(func
         Route::get('edit/{id}', [UserController::class, 'edit'])->name('admin.user.edit');
         Route::post('do-edit/{id}', [UserController::class, 'doEdit'])->name('admin.user.do-edit');
         Route::get('delete/{id}', [UserController::class, 'delete'])->name('admin.user.delete');
+        Route::post('/upload-avatar/user-{id}', [UserController::class, 'upload'])->name('admin.user.upload-avatar');
     });
 
     Route::prefix('category')->group(function () {

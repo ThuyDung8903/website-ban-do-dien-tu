@@ -73,7 +73,6 @@
                             </div>
                             <button type="submit" class="btn btn-primary">Upload new avatar</button>
                         </form>
-
                     </div>
                 </div>
             </div>

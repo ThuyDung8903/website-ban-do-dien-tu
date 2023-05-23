@@ -11,7 +11,7 @@
                         </h1>
                     </div>
                     <div class="col-12 col-xl-auto mb-3">
-                        <a class="btn btn-sm btn-light text-primary" href="{{ route('admin.user.add') }}">
+                        <a class="btn btn-sm btn-outline-blue-soft text-primary" href="{{ route('admin.user.add') }}">
                             <i class="me-1" data-feather="user-plus"></i>
                             Add New User
                         </a>
@@ -66,7 +66,7 @@
                             <td>{{ $user->phone }}</td>
                             <td>{{ $user->address }}</td>
                             <td>{{ $user->role }}</td>
-                            <td>{{ $user->joined_date }}</td>
+                            <td>{{ $user->joined_time }}</td>
                             <td>
                                 @if ($user->status === 1)
                                     <div class="badge bg-primary text-white rounded-pill">Working</div>
@@ -79,6 +79,7 @@
                                         href="{{ route('admin.user.edit', ['id' => $user->id]) }}"><i
                                             data-feather="edit"></i></a>
                                 <a class="btn btn-datatable btn-icon btn-transparent-dark"
+                                        onclick="return confirm('Are you sure you want to delete this user?')"
                                         href="{{ route('admin.user.delete', ['id' => $user->id]) }}"><i
                                             data-feather="trash-2"></i></a>
                             </td>

@@ -18,13 +18,16 @@
     <!-- Main page content-->
     <div class="container-xl px-4 mt-n10">
         <div class="card mb-4">
-            <div class="card-header d-flex bd-highlight justify-content-md-between">
-                <div class="p-2 bd-highlight">Extended DataTables</div>
-                <a href="{{ route('admin.payment-method.add') }}"
-                        class="btn btn-blue text-white p-2 flex-shrink-1 bd-highlight">Add Payment method <i
-                            data-feather="plus-circle" class="fs-5"></i></a>
+            <div class="card-header row align-items-center justify-content-between pt-3">
+                <div class="col-auto">Payment-methods List</div>
+                <div class="col-12 col-xl-auto">
+                    <a class="btn btn-sm btn-outline-blue-soft text-primary"
+                            href="{{ route('admin.payment-method.add') }}">
+                        <i class="me-1" data-feather="arrow-right"></i>
+                        Add payment-method
+                    </a>
+                </div>
             </div>
-
             <div class="card-body">
                 <table id="datatablesSimple" class="table table-hover">
                     <thead>

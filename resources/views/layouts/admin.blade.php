@@ -11,6 +11,7 @@
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet"/>
     <link href="{{ asset('admin/css/styles.css') }}" rel="stylesheet"/>
     <link rel="icon" type="image/x-icon" href="{{ asset('admin/assets/img/favicon.png') }}"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
     <script data-search-pseudo-elements defer
             src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js"
             crossorigin="anonymous"></script>
@@ -35,6 +36,22 @@
 <script src="{{ asset('admin/js/litepicker.js') }}"></script>
 <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
 <script src="{{ asset('admin/js/datatables/datatables-simple-demo.js') }}"></script>
-<script src="{{ asset('admin/js/toasts.js') }}"></script>
+<script>
+    function previewImage(event) {
+        let input = event.target;
+        let reader = new FileReader();
+
+        reader.onload = function () {
+            let previewImg = document.getElementById('previewImage');
+            previewImg.src = reader.result;
+        }
+
+        reader.readAsDataURL(input.files[0]);
+    }
+
+    let imageInput = document.getElementById('avatar');
+    imageInput.addEventListener('change', previewImage);
+</script>
+
 </body>
 </html>

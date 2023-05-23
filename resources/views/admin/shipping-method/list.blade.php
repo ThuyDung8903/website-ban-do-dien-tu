@@ -19,7 +19,16 @@
     <div class="container-xl px-4 mt-n10">
         <div class="card mb-4">
             <div class="card-header d-flex bd-highlight justify-content-md-between">
-                <div class="p-2 bd-highlight">Extended DataTables</div>
+                <div class="card-header row align-items-center justify-content-between pt-3">
+                    <div class="col-auto">Shipping-methods List</div>
+                    <div class="col-12 col-xl-auto">
+                        <a class="btn btn-sm btn-outline-blue-soft text-primary"
+                                href="{{ route('admin.shipping-method.add') }}">
+                            <i class="me-1" data-feather="arrow-right"></i>
+                            Add shipping-method
+                        </a>
+                    </div>
+                </div>
                 <a href="{{ route('admin.shipping-method.add') }}"
                         class="btn btn-blue text-white p-2 flex-shrink-1 bd-highlight">Add Shipping method <i
                             data-feather="plus-circle" class="fs-5"></i></a>

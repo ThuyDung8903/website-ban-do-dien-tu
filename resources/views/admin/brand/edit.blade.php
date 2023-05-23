@@ -21,7 +21,16 @@
                 <!-- Default Bootstrap Form Controls-->
                 <div id="default">
                     <div class="card mb-4">
-                        <div class="card-header">Edit {{ $obj->name }}</div>
+                        <div class="card-header row align-items-center justify-content-between pt-3">
+                            <div class="col-auto">Edit {{ $obj->name }}</div>
+                            <div class="col-12 col-xl-auto">
+                                <a class="btn btn-sm btn-outline-blue-soft text-primary"
+                                        href="{{ route('admin.brand.list') }}">
+                                    <i class="me-1" data-feather="arrow-left"></i>
+                                    Back to Brands List
+                                </a>
+                            </div>
+                        </div>
                         <div class="card-body">
                             @if($errors->any())
                                 <div class="alert alert-danger alert-dismissible fade show" role="alert">

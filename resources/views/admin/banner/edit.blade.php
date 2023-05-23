@@ -21,7 +21,16 @@
                 <!-- Default Bootstrap Form Controls-->
                 <div id="default">
                     <div class="card mb-4">
-                        <div class="card-header">Edit {{ $obj->name }}</div>
+                        <div class="card-header row align-items-center justify-content-between pt-3">
+                            <div class="col-auto">Edit {{ $obj->name }}</div>
+                            <div class="col-12 col-xl-auto">
+                                <a class="btn btn-sm btn-outline-blue-soft text-primary"
+                                        href="{{ route('admin.banner.list') }}">
+                                    <i class="me-1" data-feather="arrow-left"></i>
+                                    Back to Banners List
+                                </a>
+                            </div>
+                        </div>
                         <div class="card-body">
                             @if($errors->any())
                                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -59,7 +68,8 @@
                                         <div class="mb-3">
                                             <label for="image">Image</label>
                                             <img src="{{ $obj->image }}"
-                                                    style="width: 144px; height: 72px; display: block" alt="{{ $obj->name }}">
+                                                    style="width: 144px; height: 72px; display: block"
+                                                    alt="{{ $obj->name }}">
                                             <br>
                                             <input class="form-control" type="file" name="image" id="image">
                                         </div>

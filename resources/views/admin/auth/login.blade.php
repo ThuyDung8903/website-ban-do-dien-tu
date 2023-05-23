@@ -33,7 +33,7 @@
                         <a class="nav-link" href="{{ route('admin.login') }}">{{ __('Login') }}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('home') }}">{{ __('Store') }}</a>
+                        <a class="nav-link" href="{{ route('homepage') }}">{{ __('Store') }}</a>
                     </li>
                 </ul>
             </div>
