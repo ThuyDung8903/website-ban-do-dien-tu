@@ -12,12 +12,24 @@ class Order extends Model
     protected $table = 'orders';
     protected $fillable = [
         'customer_id',
-        'shipping_method_id',
-        'payment_method_id',
-        'total_price',
-        'total_bill',
         'order_status_id',
-        'comment',
+        'payment_method_id',
+        'shipping_method_id',
+        'customer_name',
+        'customer_phone',
+        'customer_email',
+        'customer_address',
+        'shipping_name',
+        'shipping_phone',
+        'shipping_email',
+        'shipping_address',
+        'shipping_zip_code',
+        'tax_price',
+        'customer_shipping_price',
+        'customer_payment_price',
+        'tracking_number',
+        'payment_mode',
+        'payment_id',
     ];
 
     public function customers()
