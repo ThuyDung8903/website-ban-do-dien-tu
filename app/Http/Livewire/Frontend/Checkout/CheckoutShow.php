@@ -83,8 +83,14 @@ class CheckoutShow extends Component
 //                'product_size' => $cartItem->product->size,
                 'quantity' => $cartItem->quantity,
             ]);
+            //update product quantity
+            $product = $cartItem->product;
+            $product->quantity = $product->quantity - $cartItem->quantity;
+            $product->save();
+            //delete cart
+            $cartItem->delete();
         }
-        return true;
+        return $order;
     }
     public function codOrder()
     {
@@ -93,8 +99,6 @@ class CheckoutShow extends Component
         $this->payment_mode = 'Cash On Delivery';
         $codOrder = $this->placeOrder();
         if($codOrder) {
-            //reset cart
-            $this->resetCart();
             $this->dispatchBrowserEvent('message', [
                 'type' => 'success',
                 'message' => 'Order Placed Successfully!',
@@ -117,6 +121,7 @@ class CheckoutShow extends Component
     }
     public function totalProductAmount()
     {
+        $this->totalProductAmount = 0;
         $this->carts = Cart::where('user_id', auth()->guard('customer')->user()->id)->get();
         foreach ($this->carts as $cartItem) {
             $this->totalProductAmount += $cartItem->product->sale_price * $cartItem->quantity;
@@ -127,7 +132,7 @@ class CheckoutShow extends Component
 
     public function render()
     {
-        //$this->totalProductAmount = $this->totalProductAmount();
+        $this->totalProductAmount = $this->totalProductAmount();
 //        $this->name = auth()->guard('customer')->user()->fullname;
 //        $this->phone = auth()->guard('customer')->user()->phone;
 //        $this->email = auth()->guard('customer')->user()->email;
