@@ -24,6 +24,15 @@ class CheckoutShow extends Component
         $this->email = auth()->guard('customer')->user()->email;
     }
 
+    protected $listeners = [
+        'validationForAll' => 'validateForAll',
+        'onlinePaymentOrder' => 'onlinePaymentOrder',
+    ];
+
+    public function validateForAll()
+    {
+        $this->validate();
+    }
     public function rules()
     {
         return [
@@ -118,6 +127,31 @@ class CheckoutShow extends Component
     {
         Cart::where('user_id', auth()->guard('customer')->user()->id)->delete();
         $this->totalProductAmount = 0;
+    }
+
+    public function onlinePaymentOrder($value)
+    {
+        // Xử lý thông tin đơn hàng và chi tiết thanh toán sau khi thanh toán thành công
+        // Ví dụ: Lưu thông tin đơn hàng vào cơ sở dữ liệu, gửi email xác nhận, v.v.
+        $this->payment_mode = 'Online Payment';
+        $this->payment_id = $value;
+        $this->payment_method_id = 2;
+        $this->shipping_method_id = 1;
+        $onlinePaymentOrder = $this->placeOrder();
+        if($onlinePaymentOrder) {
+            $this->dispatchBrowserEvent('message', [
+                'type' => 'success',
+                'message' => 'Order Placed Successfully!',
+                'status' => '200'
+            ]);
+            return redirect()->to('thank-you');
+        } else {
+            $this->dispatchBrowserEvent('message', [
+                'type' => 'error',
+                'message' => 'Something went wrong! Please try again',
+                'status' => '500'
+            ]);
+        }
     }
     public function totalProductAmount()
     {
