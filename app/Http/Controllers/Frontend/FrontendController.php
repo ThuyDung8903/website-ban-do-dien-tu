@@ -14,7 +14,9 @@ class FrontendController extends Controller
     public function index()
     {
         $sliders = Banner::where('status', '1')->get();
-        $trendingProducts = Product::where('status', '1')->where('trending', '1')->latest()->take(15)->get();
+        $trendingProducts = Product::where('status', '1')->whereHas('categories', function ($query) {
+            $query->where('status', '1');
+        })->where('trending', '1')->latest()->take(15)->get();
         return view('frontend.index', compact('sliders', 'trendingProducts'));
     }
 
