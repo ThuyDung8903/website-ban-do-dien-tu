@@ -41,6 +41,8 @@ Route::get('/collections/{category_slug}/{product_slug}', [FrontendController::c
 Route::get('/wishlist', [WishlistController::class, 'index'])->middleware('auth.customer');
 Route::get('/cart', [\App\Http\Controllers\Frontend\CartController::class, 'index'])->middleware('auth.customer');
 Route::get('/checkout', [\App\Http\Controllers\Frontend\CheckoutController::class, 'index'])->middleware('auth.customer');
+Route::get('/orders', [\App\Http\Controllers\Frontend\OrderController::class, 'index'])->middleware('auth.customer');
+Route::get('/orders/{order_id}', [\App\Http\Controllers\Frontend\OrderController::class, 'show'])->middleware('auth.customer');
 
 Route::get('thank-you', [FrontendController::class, 'thankYou'])->name('thank-you');
 

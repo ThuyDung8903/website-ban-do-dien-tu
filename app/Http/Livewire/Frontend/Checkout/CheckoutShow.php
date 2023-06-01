@@ -72,7 +72,7 @@ class CheckoutShow extends Component
             'shipping_zip_code' => $this->shipping_zip_code,
             'tax_price' => 0,
             'customer_shipping_price' => 0,
-            'customer_payment_price' => $this->totalProductAmount,
+            'customer_payment_price' => 0,
             'total_price' => $this->totalProductAmount,
             'total_bill' => $this->totalProductAmount,
             'tracking_number' => 'EMS'.rand(1000000, 9999999),
@@ -82,12 +82,13 @@ class CheckoutShow extends Component
 
 
         foreach ($this->carts as $cartItem) {
+            $product_image = ($cartItem->product->images)? $cartItem->product->images[0]->path : null;
             $orderItems = OrderDetail::create([
                 'order_id' => $order->id,
                 'product_id' => $cartItem->product_id,
                 'product_name' => $cartItem->product->name,
                 'product_price' => $cartItem->product->sale_price,
-                'product_image' => ($cartItem->product->image)? $cartItem->product->image[0]->path : null,
+                'product_image' => $product_image,
 //                'product_color' => $cartItem->product->color,
 //                'product_size' => $cartItem->product->size,
                 'quantity' => $cartItem->quantity,
