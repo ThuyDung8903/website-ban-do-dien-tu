@@ -45,6 +45,7 @@
     <main class="py-4">
         @yield('content')
     </main>
+    @include('layouts.inc.frontend.footer')
 </div>
 
 {{-- Bootstrap 5.1 JavaScript --}}

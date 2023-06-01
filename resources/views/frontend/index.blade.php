@@ -53,7 +53,6 @@
                         <h4 class="text-center">Welcome to our website</h4>
                         <div class="underline"></div>
                     </div>
-                    <div class="underline"></div>
                     <p>
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium, adipisci alias aliquid
                         amet. Integer ipsum, laboriosam magnam natus nemo nisi nostrum officia quae quas quibusdam
