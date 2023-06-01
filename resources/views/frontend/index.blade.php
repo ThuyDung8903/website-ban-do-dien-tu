@@ -88,7 +88,7 @@
 
                                         </div>
                                         <div class="product-card-body">
-                                            <p class="product-brand">{{ $productItem->brand_name }}</p>
+                                            <p class="product-brand">{{ $productItem->brands->name }}</p>
                                             <h5 class="product-name">
                                                 <a href="{{ url('/collections/'.$productItem->category->slug.'/'.$productItem->slug) }}">
                                                     {{ $productItem->name}}
@@ -98,11 +98,11 @@
                                                 <span class="selling-price">${{ $productItem->sale_price }}</span>
                                                 <span class="original-price">${{ $productItem->price }}</span>
                                             </div>
-                                            <div class="mt-2">
-                                                <a href="" class="btn btn1">Add To Cart</a>
-                                                <a href="" class="btn btn1"> <i class="fa fa-heart"></i> </a>
-                                                <a href="" class="btn btn1"> View </a>
-                                            </div>
+{{--                                            <div class="mt-2">--}}
+{{--                                                <a href="" class="btn btn1">Add To Cart</a>--}}
+{{--                                                <a href="" class="btn btn1"> <i class="fa fa-heart"></i> </a>--}}
+{{--                                                <a href="" class="btn btn1"> View </a>--}}
+{{--                                            </div>--}}
                                         </div>
                                     </div>
                                 </div>

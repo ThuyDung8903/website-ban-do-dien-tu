@@ -38,6 +38,8 @@ Route::get('/collections', [FrontendController::class, 'categories'])->name('col
 Route::get('/collections/{category_slug}', [FrontendController::class, 'products'])->name('collections.products');
 Route::get('/collections/{category_slug}/{product_slug}', [FrontendController::class, 'productView'])->name('collection.product.view');
 
+Route::get('/new-arrivals', [FrontendController::class, 'newArrivals'])->name('new-arrivals');
+
 Route::get('/wishlist', [WishlistController::class, 'index'])->middleware('auth.customer');
 Route::get('/cart', [\App\Http\Controllers\Frontend\CartController::class, 'index'])->middleware('auth.customer');
 Route::get('/checkout', [\App\Http\Controllers\Frontend\CheckoutController::class, 'index'])->middleware('auth.customer');

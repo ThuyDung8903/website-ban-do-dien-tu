@@ -52,6 +52,13 @@ class FrontendController extends Controller
         }
     }
 
+    public function newArrivals()
+    {
+        $newArrivalsProducts = Product::where('status', '1')->whereHas('categories', function ($query) {
+            $query->where('status', '1');
+        })->latest()->take(16)->get();
+        return view('frontend.pages.new-arrivals', compact('newArrivalsProducts'));
+    }
     public function thankYou()
     {
         return view('frontend.thank-you');
