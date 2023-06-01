@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Banner;
 use App\Models\Brand;
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class FrontendController extends Controller
@@ -13,7 +14,8 @@ class FrontendController extends Controller
     public function index()
     {
         $sliders = Banner::where('status', '1')->get();
-        return view('frontend.index', compact('sliders'));
+        $trendingProducts = Product::where('status', '1')->where('trending', '1')->latest()->take(15)->get();
+        return view('frontend.index', compact('sliders', 'trendingProducts'));
     }
 
     public function categories()

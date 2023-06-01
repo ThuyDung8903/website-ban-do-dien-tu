@@ -24,6 +24,9 @@
     {{-- Bootstrap 5.1 CSS --}}
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/custom.css') }}" rel="stylesheet">
+    {{--    CSS Owl Carousel--}}
+    <link rel="stylesheet" href="{{ asset('assets/css/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/owl.theme.default.min.css') }}">
     <!-- CSS Alertifyjs-->
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
     <!-- Default theme -->
@@ -33,30 +36,35 @@
 </head>
 
 <body>
-    <div id="app">
-        @include('layouts.inc.frontend.navbar')
-        <main class="py-4">
-            @yield('content')
-        </main>
-    </div>
+<div id="app">
+    @include('layouts.inc.frontend.navbar')
+    <main class="py-4">
+        @yield('content')
+    </main>
+</div>
 
-    {{-- Bootstrap 5.1 JavaScript --}}
-    <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="{{ asset('assets/js/jquery-3.6.4.min.js') }}"></script>
-    <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
+{{-- Bootstrap 5.1 JavaScript --}}
+<!-- Option 1: Bootstrap Bundle with Popper -->
+<script src="{{ asset('assets/js/jquery-3.6.4.min.js') }}"></script>
+<script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
 
-    <!-- JavaScript for https://alertifyjs.com/guide.html -->
-    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
-    <script>
-        window.addEventListener('message', event => {
-            if(event.detail){
-                alertify.set('notifier','position', 'top-right');
-                alertify.notify(event.detail.message, event.detail.type);
-            }
-        });
-    </script>
-    @livewireScripts
-    @stack('scripts')
+<!-- JavaScript for https://alertifyjs.com/guide.html -->
+<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+<script>
+    window.addEventListener('message', event => {
+        if (event.detail) {
+            alertify.set('notifier', 'position', 'top-right');
+            alertify.notify(event.detail.message, event.detail.type);
+        }
+    });
+</script>
+
+{{--    JavaScript Owl Carousel--}}
+<script src="{{ asset('assets/js/owl.carousel.min.js') }}"></script>
+@yield('script')
+
+@livewireScripts
+@stack('scripts')
 </body>
 
 </html>
