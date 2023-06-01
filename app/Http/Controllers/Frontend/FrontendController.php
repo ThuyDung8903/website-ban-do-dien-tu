@@ -59,6 +59,14 @@ class FrontendController extends Controller
         })->latest()->take(16)->get();
         return view('frontend.pages.new-arrivals', compact('newArrivalsProducts'));
     }
+
+    public function trendingProducts()
+    {
+        $trendingProducts = Product::where('status', '1')->whereHas('categories', function ($query) {
+            $query->where('status', '1');
+        })->where('trending', '1')->latest()->take(16)->get();
+        return view('frontend.pages.trending-products', compact('trendingProducts'));
+    }
     public function thankYou()
     {
         return view('frontend.thank-you');
