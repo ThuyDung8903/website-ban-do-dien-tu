@@ -25,6 +25,7 @@
                                                 <h5>{{ $categoryItem->name }}</h5>
                                             </div>
                                         </a>
+                                </a>
                         </div>
                     </div>
                 @empty

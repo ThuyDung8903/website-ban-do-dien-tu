@@ -62,6 +62,53 @@
             </div>
         </div>
     </div>
+
+    {{--   All Categories --}}
+    <div class="py-5 bg-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h4>All Categories
+                        <a href="{{ url('/categories') }}" class="btn btn-sm btn-primary float-end">View All</a>
+                    </h4>
+                    <div class="footer-underline mb-4"></div>
+                </div>
+                @if ($categories)
+                    <div class="col-md-12">
+                        <div class="owl-carousel owl-theme trending-product four-carousel">
+                            @foreach($categories as $categoryItem)
+                                <div class="item">
+                                        <div class="category-card">
+                                            @if (!empty($categoryItem->slug))
+                                                <a href="{{ url('/collections/'.$categoryItem->slug) }}">
+                                                    @else
+                                                        <a href="{{ url('/collections/'.$categoryItem->id) }}">
+                                                            @endif
+                                                            <div class="category-card-img">
+                                                                <img src="{{ $categoryItem->image }}" class="w-100"
+                                                                     alt="{{ $categoryItem->slug }}">
+                                                            </div>
+                                                            <div class="category-card-body">
+                                                                <h5>{{ $categoryItem->name }}</h5>
+                                                            </div>
+                                                        </a>
+                                                </a>
+                                        </div>
+                                    </div>
+                            @endforeach
+                        </div>
+                    </div>
+                @else
+                    <div class="col-md-12">
+                        <div class="p-2">
+                            <h4>No Products Available</h4>
+                        </div>
+                    </div>
+                @endif
+            </div>
+        </div>
+    </div>
+
     {{--    Trending Products --}}
     <div class="py-5 bg-white">
         <div class="container">
