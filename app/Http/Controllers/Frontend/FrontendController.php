@@ -16,8 +16,11 @@ class FrontendController extends Controller
         $sliders = Banner::where('status', '1')->get();
         $trendingProducts = Product::where('status', '1')->whereHas('categories', function ($query) {
             $query->where('status', '1');
-        })->where('trending', '1')->latest()->take(15)->get();
-        return view('frontend.index', compact('sliders', 'trendingProducts'));
+        })->where('trending', '1')->latest()->take(20)->get();
+        $newArrivalsProducts = Product::where('status', '1')->whereHas('categories', function ($query) {
+            $query->where('status', '1');
+        })->latest()->take(20)->get();
+        return view('frontend.index', compact('sliders', 'trendingProducts', 'newArrivalsProducts'));
     }
 
     public function categories()
