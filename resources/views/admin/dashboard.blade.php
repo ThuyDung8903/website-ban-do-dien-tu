@@ -24,7 +24,7 @@
                     <div class="col">
                         <h2 class="text-primary">Welcome back, your dashboard is ready!</h2>
                         <p class="text-gray-700">Great job, your affiliate dashboard is ready to go! You can view sales, generate links, prepare coupons, and download affiliate reports using this dashboard.</p>
-                        <a class="btn btn-primary p-3" href="#">
+                        <a class="btn btn-primary p-3" href="{{ route('admin.order.list') }}">
                             Get Started
                             <i class="ms-1" data-feather="arrow-right"></i>
                         </a>

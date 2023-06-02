@@ -16,7 +16,7 @@ class AttributeValue extends Model
         'status',
     ];
 
-    public function attributes()
+    public function attribute()
     {
         return $this->hasOne(Attribute::class, 'id', 'attribute_value');
     }

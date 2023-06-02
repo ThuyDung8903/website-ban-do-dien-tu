@@ -20,22 +20,22 @@ class Order extends Model
         'comment',
     ];
 
-    public function customers()
+    public function customer()
     {
         return $this->hasOne(Customer::class, 'id', 'customer_id');
     }
 
-    public function order_statuses()
+    public function order_status()
     {
         return $this->hasOne(OrderStatus::class, 'id', 'order_status_id');
     }
 
-    public function payment_methods()
+    public function payment_method()
     {
         return $this->hasOne(PaymentMethod::class, 'id', 'payment_method_id');
     }
 
-    public function shipping_methods()
+    public function shipping_method()
     {
         return $this->hasOne(ShippingMethod::class, 'id', 'shipping_method_id');
     }

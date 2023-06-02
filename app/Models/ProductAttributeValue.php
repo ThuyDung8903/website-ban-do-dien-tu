@@ -16,12 +16,12 @@ class ProductAttributeValue extends Model
         'status',
     ];
 
-    public function products()
+    public function product()
     {
         return $this->hasOne(Product::class, 'id', 'product_id');
     }
 
-    public function attribute_values()
+    public function attribute_value()
     {
         return $this->hasOne(AttributeValue::class, 'id', 'attribute_value_id');
     }

@@ -75,7 +75,6 @@ class UserController extends Controller implements ICrud
             'address' => 'required',
             'role' => 'required',
             'joined_time' => 'required|date',
-            'avatar' => 'mimes:jpg,jpeg,png,gif|max:5120',
             'password' => 'nullable|min:6|max:32',
             'password_confirmation' => 'nullable|same:password'
         ]);
@@ -84,12 +83,6 @@ class UserController extends Controller implements ICrud
             return redirect()->back()->withErrors($errors)->withInput();
         }
         $data = $request->except('avatar');
-        if ($request->avatar != null) {
-            $file_name = $request->avatar->getClientOriginalName();
-            $request->avatar->move(public_path('uploads/users'), $file_name);
-            $path = '/uploads/users/' . $file_name;
-            $data['avatar'] = $path;
-        }
         unset($data['_token']);
         User::where('id', $id)->update($data);
         return redirect()->back()->with('success', 'Update successfully!');

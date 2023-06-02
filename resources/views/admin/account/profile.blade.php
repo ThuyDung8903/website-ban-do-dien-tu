@@ -26,7 +26,7 @@
         <!-- Account page navigation-->
         <nav class="nav nav-borders">
             <a class="nav-link active ms-0" href="{{ route('admin.account.profile') }}">Profile</a>
-            <a class="nav-link" href="account-security.html">Security</a>
+            <a class="nav-link" href="javascript:void(0)">Security</a>
         </nav>
         <hr class="mt-0 mb-4">
         @if ($errors->any())

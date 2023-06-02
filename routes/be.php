@@ -4,9 +4,12 @@ use App\Http\Controllers\Admin\AccountProfileController;
 use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\OrderStatusController;
 use App\Http\Controllers\Admin\PaymentMethodController;
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ShippingMethodController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Middleware\AdminAccountMiddleware;
@@ -30,7 +33,15 @@ Route::prefix('/admin')->middleware([AdminAccountMiddleware::class])->group(func
         Route::get('delete/{id}', [UserController::class, 'delete'])->name('admin.user.delete');
         Route::post('/upload-avatar/user-{id}', [UserController::class, 'upload'])->name('admin.user.upload-avatar');
     });
-
+    Route::prefix('customer')->group(function () {
+        Route::get('list', [CustomerController::class, 'list'])->name('admin.customer.list');
+        Route::get('add', [CustomerController::class, 'add'])->name('admin.customer.add');
+        Route::post('do-add', [CustomerController::class, 'doAdd'])->name('admin.customer.do-add');
+        Route::get('edit/{id}', [CustomerController::class, 'edit'])->name('admin.customer.edit');
+        Route::post('do-edit/{id}', [CustomerController::class, 'doEdit'])->name('admin.customer.do-edit');
+        Route::get('delete/{id}', [CustomerController::class, 'delete'])->name('admin.customer.delete');
+        Route::post('/upload-avatar/customer-{id}', [CustomerController::class, 'upload'])->name('admin.customer.upload-avatar');
+    });
     Route::prefix('category')->group(function () {
         Route::get('list', [CategoryController::class, 'list'])->name('admin.category.list');
         Route::get('add', [CategoryController::class, 'add'])->name('admin.category.add');
@@ -80,5 +91,23 @@ Route::prefix('/admin')->middleware([AdminAccountMiddleware::class])->group(func
         Route::get('delete/{id}', [OrderStatusController::class, 'delete'])->name('admin.order-status.delete');
     });
 
+    Route::prefix('product')->group(function () {
+        Route::get('list', [ProductController::class, 'list'])->name('admin.product.list');
+        Route::get('add', [ProductController::class, 'add'])->name('admin.product.add');
+        Route::post('do-add', [ProductController::class, 'doAdd'])->name('admin.product.do-add');
+        Route::get('edit/{id}', [ProductController::class, 'edit'])->name('admin.product.edit');
+        Route::post('do-edit/{id}', [ProductController::class, 'doEdit'])->name('admin.product.do-edit');
+        Route::get('delete/{id}', [ProductController::class, 'delete'])->name('admin.product.delete');
+        Route::get('/delete-image/{id}', [ProductController::class, 'deleteImage'])->name('admin.product.delete-image');
+//        Route::get('product-detail', [ProductController::class, 'view_detail'])->name('admin.product.product-detail');
+    });
+
+    Route::prefix('order')->group(function () {
+        Route::get('list', [OrderController::class, 'index'])->name('admin.order.list');
+        Route::put('update-status/{id}', [OrderController::class, 'updateOrderStatus'])->name('admin.order.update-status');
+        Route::get('invoice/{id}', [OrderController::class, 'invoice'])->name('admin.order.invoice');
+        Route::get('view-invoice/{id}', [OrderController::class, 'viewInvoice'])->name('admin.order.view-invoice');
+        Route::get('invoice/generate/{id}', [OrderController::class, 'generateInvoice'])->name('admin.order.invoice-generate');
+    });
 
 });

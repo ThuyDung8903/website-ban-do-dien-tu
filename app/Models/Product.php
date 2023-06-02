@@ -16,11 +16,17 @@ class Product extends Model
         'sale_price',
         'category_id',
         'brand_id',
+        'quantity',
+        'slug',
         'short_description',
         'detail_description',
         'view',
         'total_sold',
         'status',
+        'trending',
+        'meta_title',
+        'meta_keyword',
+        'meta_description',
     ];
 
     public function product_attribute_values()
@@ -33,27 +39,23 @@ class Product extends Model
         return $this->hasMany(Image::class, 'product_id', 'id');
     }
 
-    public function reviews()
+    public function review()
     {
         return $this->hasMany(Review::class, 'product_id', 'id');
     }
 
-    public function order_details()
+    public function order_detail()
     {
         return $this->hasMany(OrderDetail::class, 'product_id', 'id');
     }
 
-    public function categories()
-    {
-        return $this->hasOne(Category::class, 'id', 'category_id');
-    }
-
     public function category()
     {
-        return $this->belongsTo(Category::class,'category_id', 'id');
+        return $this->belongsTo(Category::class, 'category_id', 'id');
     }
-    public function brands()
+
+    public function brand()
     {
-        return $this->belongsTo(Brand::class,'brand_id', 'id');
+        return $this->belongsTo(Brand::class, 'brand_id', 'id');
     }
 }
