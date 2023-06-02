@@ -3,7 +3,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-2 my-auto d-none d-sm-none d-md-block d-lg-block">
-                    <h5 class="brand-name">Shop Thuy Dung</h5>
+                    <h5 class="brand-name"><a class="link text-decoration-none text-white" href="{{ url('/') }}">Shop Thuy Dung</a></h5>
                 </div>
                 <div class="col-md-5 my-auto">
                     <form action="{{ url('search') }}" method="GET" role="search">
@@ -47,7 +47,7 @@
                                 <i class="fa fa-user"></i> {{ Auth::guard('customer')->user()->username }}
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="{{ url('/user/profile') }}"><i class="fa fa-user"></i> Profile</a></li>
+                                <li><a class="dropdown-item" href="{{ url('/profile') }}"><i class="fa fa-user"></i> Profile</a></li>
                                 <li><a class="dropdown-item" href="{{ url('/orders') }}"><i class="fa fa-list"></i> My Orders</a></li>
                                 <li><a class="dropdown-item" href="{{ url('/wishlist') }}"><i class="fa fa-heart"></i> My Wishlist</a></li>
                                 <li><a class="dropdown-item" href="{{ url('/cart') }}"><i class="fa fa-shopping-cart"></i> My Cart</a></li>
@@ -81,7 +81,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/') }}">Home</a>
+                        <a class="nav-link" href="{{ url('/') }}">Homepage</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('/collections') }}">All Categories</a>
@@ -91,15 +91,6 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('/trending-products') }}">Trending Products</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Electronics</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Fashions</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Accessories</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Hot Deals</a>

@@ -32,8 +32,8 @@ Route::group(['middleware' => ['auth:customer']], function () {
 //Route::post('/register', [CustomerAuthController::class, 'register'])->name('customer.register.submit');
 //Route::post('/logout', [CustomerAuthController::class, 'logout'])->name('customer.logout');
 
-//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/', [FrontendController::class, 'index'])->name('homepage');
+Route::get('/', [FrontendController::class, 'index'])->name('index');
+Route::get('/home', [FrontendController::class, 'index'])->name('homepage');
 Route::get('/collections', [FrontendController::class, 'categories'])->name('collections.categories');
 Route::get('/collections/{category_slug}', [FrontendController::class, 'products'])->name('collections.products');
 Route::get('/collections/{category_slug}/{product_slug}', [FrontendController::class, 'productView'])->name('collection.product.view');
@@ -48,6 +48,8 @@ Route::get('/cart', [\App\Http\Controllers\Frontend\CartController::class, 'inde
 Route::get('/checkout', [\App\Http\Controllers\Frontend\CheckoutController::class, 'index'])->middleware('auth.customer');
 Route::get('/orders', [\App\Http\Controllers\Frontend\OrderController::class, 'index'])->middleware('auth.customer');
 Route::get('/orders/{order_id}', [\App\Http\Controllers\Frontend\OrderController::class, 'show'])->middleware('auth.customer');
+Route::get('/profile', [\App\Http\Controllers\Frontend\UserController::class, 'index'])->middleware('auth.customer');
+Route::post('/profile', [\App\Http\Controllers\Frontend\UserController::class, 'update'])->middleware('auth.customer');
 
 Route::get('thank-you', [FrontendController::class, 'thankYou'])->name('thank-you');
 
