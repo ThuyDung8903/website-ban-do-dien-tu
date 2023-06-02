@@ -38,5 +38,16 @@ Route::get('/collections', [FrontendController::class, 'categories'])->name('col
 Route::get('/collections/{category_slug}', [FrontendController::class, 'products'])->name('collections.products');
 Route::get('/collections/{category_slug}/{product_slug}', [FrontendController::class, 'productView'])->name('collection.product.view');
 
+Route::get('/new-arrivals', [FrontendController::class, 'newArrivals'])->name('new-arrivals');
+Route::get('/trending-products', [FrontendController::class, 'trendingProducts'])->name('trending-products');
+
+Route::get('/search', [FrontendController::class, 'searchProducts'])->name('search');
+
 Route::get('/wishlist', [WishlistController::class, 'index'])->middleware('auth.customer');
-Route::get('/cart', [CartController::class, 'index'])->middleware('auth.customer');
+Route::get('/cart', [\App\Http\Controllers\Frontend\CartController::class, 'index'])->middleware('auth.customer');
+Route::get('/checkout', [\App\Http\Controllers\Frontend\CheckoutController::class, 'index'])->middleware('auth.customer');
+Route::get('/orders', [\App\Http\Controllers\Frontend\OrderController::class, 'index'])->middleware('auth.customer');
+Route::get('/orders/{order_id}', [\App\Http\Controllers\Frontend\OrderController::class, 'show'])->middleware('auth.customer');
+
+Route::get('thank-you', [FrontendController::class, 'thankYou'])->name('thank-you');
+

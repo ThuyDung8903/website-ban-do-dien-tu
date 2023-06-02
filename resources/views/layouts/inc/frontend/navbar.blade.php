@@ -6,9 +6,9 @@
                     <h5 class="brand-name">Shop Thuy Dung</h5>
                 </div>
                 <div class="col-md-5 my-auto">
-                    <form role="search">
+                    <form action="{{ url('search') }}" method="GET" role="search">
                         <div class="input-group">
-                            <input type="search" placeholder="Search your product" class="form-control" />
+                            <input type="search" name="keyword" value="{{ Request::get('keyword') }}" placeholder="Search your product" class="form-control" />
                             <button class="btn bg-white" type="submit">
                                 <i class="fa fa-search"></i>
                             </button>
@@ -19,8 +19,8 @@
                     <ul class="nav justify-content-end">
 
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <i class="fa fa-shopping-cart"></i> Cart (0)
+                            <a class="nav-link" href="{{ url('cart') }}">
+                                <i class="fa fa-shopping-cart"></i> Cart (<livewire:frontend.cart.cart-count />)
                             </a>
                         </li>
                         <li class="nav-item">
@@ -47,10 +47,10 @@
                                 <i class="fa fa-user"></i> {{ Auth::guard('customer')->user()->username }}
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#"><i class="fa fa-user"></i> Profile</a></li>
-                                <li><a class="dropdown-item" href="#"><i class="fa fa-list"></i> My Orders</a></li>
-                                <li><a class="dropdown-item" href="#"><i class="fa fa-heart"></i> My Wishlist</a></li>
-                                <li><a class="dropdown-item" href="#"><i class="fa fa-shopping-cart"></i> My Cart</a></li>
+                                <li><a class="dropdown-item" href="{{ url('/user/profile') }}"><i class="fa fa-user"></i> Profile</a></li>
+                                <li><a class="dropdown-item" href="{{ url('/orders') }}"><i class="fa fa-list"></i> My Orders</a></li>
+                                <li><a class="dropdown-item" href="{{ url('/wishlist') }}"><i class="fa fa-heart"></i> My Wishlist</a></li>
+                                <li><a class="dropdown-item" href="{{ url('/cart') }}"><i class="fa fa-shopping-cart"></i> My Cart</a></li>
                                 <li>
                                     <a class="dropdown-item" href="{{ route('customer.logout') }}"
                                        onclick="event.preventDefault();
@@ -90,7 +90,7 @@
                         <a class="nav-link" href="{{ url('/new-arrivals') }}">New Arrivals</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Featured Products</a>
+                        <a class="nav-link" href="{{ url('/trending-products') }}">Trending Products</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Electronics</a>
@@ -102,10 +102,16 @@
                         <a class="nav-link" href="#">Accessories</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Home</a>
+                        <a class="nav-link" href="#">Hot Deals</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Appliances</a>
+                        <a class="nav-link" href="#">Blogs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
                     </li>
                 </ul>
             </div>

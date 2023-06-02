@@ -1,3 +1,4 @@
+@php use Illuminate\Support\Str; @endphp
 @extends('layouts.admin')
 @section('main-content')
     <header class="page-header page-header-compact page-header-light border-bottom bg-white mb-4">
@@ -153,7 +154,7 @@
                                     </div>
                                 </div>
                             </td>
-                            <td>{{ $product->name }}</td>
+                            <td>{{ Str::limit($product->name, 30, '...') }}</td>
                             <td>{{ $product->category->name }}</td>
                             <td>{{ $product->brand->name }}</td>
                             <td>{{ $product->price }}</td>

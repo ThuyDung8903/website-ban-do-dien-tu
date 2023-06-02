@@ -24,6 +24,7 @@ class Index extends Component
         $this->products = $this->category->products()
             ->join('brands', 'brand_id', '=', 'brands.id')
             ->select('brands.name as brand_name', 'products.*')
+            ->where('products.status', '1')
             ->when($this->brandInputs, function ($q) {
                 $q->whereIn('brand_id', $this->brandInputs);
             })

@@ -24,9 +24,26 @@
             @endif
             <div class="row">
                 <div class="col-md-5 mt-3">
-                    <div class="bg-white border">
+                    <div class="bg-white border" wire:ignore>
                         @if ($product->images)
-                            <img src="{{ $product->images[0]->path }}" class="w-100" alt="{{ $product->slug }}">
+{{--                            <img src="{{ $product->images[0]->path }}" class="w-100" alt="{{ $product->slug }}">--}}
+                            <div class="exzoom" id="exzoom">
+                                <!-- Images -->
+                                <div class="exzoom_img_box">
+                                    <ul class='exzoom_img_ul'>
+                                        @foreach($product->images as $image)
+                                            <li><img src="{{ asset($image->path) }}"/></li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                                <!-- <a href="https://www.jqueryscript.net/tags.php?/Thumbnail/">Thumbnail</a> Nav-->
+                                <div class="exzoom_nav"></div>
+                                <!-- Nav Buttons -->
+                                <p class="exzoom_btn">
+                                    <a href="javascript:void(0);" class="exzoom_prev_btn"> < </a>
+                                    <a href="javascript:void(0);" class="exzoom_next_btn"> > </a>
+                                </p>
+                            </div>
                         @else
                             No Image Found
                         @endif
@@ -97,3 +114,27 @@
     </div>
 
 </div>
+
+@push('scripts')
+    <script>
+        $(function(){
+
+            $("#exzoom").exzoom({
+
+                // thumbnail nav options
+                "navWidth": 60,
+                "navHeight": 60,
+                "navItemNum": 5,
+                "navItemMargin": 7,
+                "navBorder": 1,
+
+                // autoplay
+                "autoPlay": false,
+
+                // autoplay interval in milliseconds
+                "autoPlayTimeout": 2000,
+            });
+
+        });
+    </script>
+@endpush

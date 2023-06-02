@@ -97,7 +97,7 @@ class View extends Component
                             'product_id' => $productId,
                             'quantity' => $this->quantityCount,
                         ]);
-                        $this->emit('cartCountUpdated');
+                        $this->emit('cartAddedUpdated');
                         //session()->flash('success', 'Added to cart successfully');
                         $this->dispatchBrowserEvent('message', [
                             'type' => 'success',
@@ -109,6 +109,7 @@ class View extends Component
                         //update quantity in cart if already added this product to cart
                         $check->increment('quantity', $this->quantityCount);
                         $this->emit('cartCountUpdated');
+                        $this->emit('cartAddedUpdated');
                         $this->dispatchBrowserEvent('message', [
                             'type' => 'warning',
                             'message' => 'Already added to cart and Updated quantity',
