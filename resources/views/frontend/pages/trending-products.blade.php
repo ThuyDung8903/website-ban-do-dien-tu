@@ -16,7 +16,7 @@
                     <div class="col-md-3">
                         <div class="product-card">
                             <div class="product-card-img">
-                                <label class="stock bg-danger">New</label>
+                                <label class="stock bg-danger">Featured</label>
                                 @if ($productItem->images->count() > 0)
                                     <a href="{{ url('/collections/'.$productItem->category->slug.'/'.$productItem->slug) }}">
                                         <img src="{{ $productItem->images[0]->path }}"

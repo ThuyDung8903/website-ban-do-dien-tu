@@ -23,6 +23,25 @@ class FrontendController extends Controller
         return view('frontend.index', compact('sliders', 'trendingProducts', 'newArrivalsProducts'));
     }
 
+    public function searchProducts(Request $request)
+    {
+        if($request->keyword)
+        {
+            $keyword = $request->keyword;
+            $searchProducts = Product::where('status', '1')
+                ->whereHas('category', function ($query) {
+                $query->where('status', '1');})
+                ->where('name', 'like', '%' . $keyword . '%')
+                ->orWhere('short_description', 'like', '%' . $keyword . '%')
+                ->orWhere('detail_description', 'like', '%' . $keyword . '%')
+                ->paginate(10);
+            return view('frontend.pages.search', compact('searchProducts', 'keyword'));
+        } else {
+            return redirect()->back()->with('message', 'Please enter a keyword to search');
+        }
+
+    }
+
     public function categories()
     {
         $categories = Category::where('status', '1')->get();
