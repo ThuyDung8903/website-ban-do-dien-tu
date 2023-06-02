@@ -22,6 +22,7 @@ class CheckoutShow extends Component
         $this->name = auth()->guard('customer')->user()->fullname;
         $this->phone = auth()->guard('customer')->user()->phone;
         $this->email = auth()->guard('customer')->user()->email;
+        $this->address = auth()->guard('customer')->user()->address;
     }
 
     protected $listeners = [

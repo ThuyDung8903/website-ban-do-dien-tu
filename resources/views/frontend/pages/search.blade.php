@@ -9,7 +9,7 @@
             <div class="row justify-content-center">
                 <div class="col-md-10">
                     <h4>Search results for <strong>"{{ $keyword }}"</strong></h4>
-                    <hr/>
+                    <div class="footer-underline mb-4"></div>
                 </div>
 
                 @forelse($searchProducts as $productItem)

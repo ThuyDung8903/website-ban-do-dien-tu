@@ -345,5 +345,28 @@
     width: 20px;
 }
 /* Footer End */
+/* Fix category card height */
+.category-card-img {
+    height: 200px; /* hoặc bất kì giá trị chiều cao nào bạn muốn */
+}
+
+.category-card-img img {
+    display: block;
+    height: 100%;
+    width: 100%;
+    object-fit: cover; /* giúp ảnh tự động căn chỉnh kích thước để đạt chiều cao và chiều rộng tối đa */
+}
+/* End Fix category card height */
+/* Fix product card height */
+.product-card-img {
+    height: 250px; /* hoặc bất kì giá trị chiều cao nào bạn muốn */
+}
+.product-card-img img {
+    display: block;
+    height: 100%;
+    width: 100%;
+    object-fit: cover; /* giúp ảnh tự động căn chỉnh kích thước để đạt chiều cao và chiều rộng tối đa */
+}
+/* End Fix product card height */
 
 
