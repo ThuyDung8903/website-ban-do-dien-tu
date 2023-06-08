@@ -43,13 +43,25 @@ class Order extends Model
     {
         return $this->hasOne(OrderStatus::class, 'id', 'order_status_id');
     }
+    public function order_statuses()
+    {
+        return $this->hasOne(OrderStatus::class, 'id', 'order_status_id');
+    }
 
     public function payment_method()
     {
         return $this->hasOne(PaymentMethod::class, 'id', 'payment_method_id');
     }
+    public function payment_methods()
+    {
+        return $this->hasOne(PaymentMethod::class, 'id', 'payment_method_id');
+    }
 
     public function shipping_method()
+    {
+        return $this->hasOne(ShippingMethod::class, 'id', 'shipping_method_id');
+    }
+    public function shipping_methods()
     {
         return $this->hasOne(ShippingMethod::class, 'id', 'shipping_method_id');
     }
