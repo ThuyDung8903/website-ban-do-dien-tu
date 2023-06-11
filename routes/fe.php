@@ -52,4 +52,5 @@ Route::get('/profile', [\App\Http\Controllers\Frontend\UserController::class, 'i
 Route::post('/profile', [\App\Http\Controllers\Frontend\UserController::class, 'update'])->middleware('auth.customer');
 
 Route::get('thank-you', [FrontendController::class, 'thankYou'])->name('thank-you');
+Route::get('about-us', [FrontendController::class, 'aboutUs'])->name('about-us');
 

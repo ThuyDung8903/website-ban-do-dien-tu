@@ -48,7 +48,7 @@
                 @endforelse
 
                 <div class="text-center">
-                    <a href="{{ url('collections') }}" class="btn btn-warning px-3">View More</a>
+                    {{ $trendingProducts->links() }}
                 </div>
             </div>
         </div>

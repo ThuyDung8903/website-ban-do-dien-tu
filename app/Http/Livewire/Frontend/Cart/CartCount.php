@@ -11,6 +11,7 @@ class CartCount extends Component
 
     protected $listeners = [
         'cartAddedUpdated' => 'checkCartCount',
+        'cartCountUpdated' => 'checkCartCount',
     ];
 
     public function checkCartCount()

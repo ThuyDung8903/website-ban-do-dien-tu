@@ -314,6 +314,9 @@
     padding: 40px 0px;
     background-color: #2874f0;
     color: #fff;
+    display: flex;
+    align-items: flex-end;
+    min-height: 100%;
 }
 .footer-area a{
     text-decoration: none;
@@ -343,6 +346,9 @@
     margin: 0px 10px;
     color: #fff;
     width: 20px;
+}
+.page-footer {
+    flex-shrink: 0;
 }
 /* Footer End */
 /* Fix category card height */

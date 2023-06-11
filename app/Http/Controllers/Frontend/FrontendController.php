@@ -79,7 +79,7 @@ class FrontendController extends Controller
     {
         $newArrivalsProducts = Product::where('status', '1')->whereHas('categories', function ($query) {
             $query->where('status', '1');
-        })->latest()->take(16)->get();
+        })->latest()->take(36)->paginate(12);
         return view('frontend.pages.new-arrivals', compact('newArrivalsProducts'));
     }
 
@@ -87,11 +87,16 @@ class FrontendController extends Controller
     {
         $trendingProducts = Product::where('status', '1')->whereHas('categories', function ($query) {
             $query->where('status', '1');
-        })->where('trending', '1')->latest()->take(16)->get();
+        })->where('trending', '1')->latest()->take(36)->paginate(12);
         return view('frontend.pages.trending-products', compact('trendingProducts'));
     }
     public function thankYou()
     {
         return view('frontend.thank-you');
+    }
+
+    public function aboutUs()
+    {
+        return view('frontend.about-us');
     }
 }

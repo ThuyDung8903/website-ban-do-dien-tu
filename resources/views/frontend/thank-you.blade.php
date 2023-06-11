@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Checkout')
+@section('title', 'Thank you')
 
 @section('content')
 
@@ -13,12 +13,27 @@
                 <hr>
                 <p>
                     Your order has been placed and is being processed. When the item(s) are shipped, you will receive an
-                    email with the delivery details.
+                    email with the details.
                 </p>
+                <p>If you have any questions, please feel free to <a href="{{ url('/contact-us') }}">contact us</a>, our
+                    customer service center is working for you 24/7.</p>
                 <p>
-                    If you have any questions, please feel free to contact us at <a
-                        href="mailto:contact@shopthuydung.store">contact@shopthuydung.store{{ config('settings.site_email') }}</a>.
+                    <a href="{{ url('/orders') }}" class="btn btn-primary">View orders history</a>
+                or <a href="{{ url('/') }}" class="btn btn-primary">Go to homepage</a>
                 </p>
+
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
             </div>
         </div>
     </div>
