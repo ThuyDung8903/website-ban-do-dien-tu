@@ -136,7 +136,7 @@
 
                                         </div>
                                         <div class="product-card-body">
-                                            <p class="product-brand">{{ $productItem->brands->name }}</p>
+                                            <p class="product-brand">{{ $productItem->brands->name ?? 'No brand' }}</p>
                                             <h5 class="product-name">
                                                 <a href="{{ url('/collections/'.$productItem->category->slug.'/'.$productItem->slug) }}">
                                                     {{ $productItem->name}}
@@ -178,7 +178,7 @@
                     </h4>
                     <div class="footer-underline mb-4"></div>
                 </div>
-                @if ($trendingProducts)
+                @if ($newArrivalsProducts)
                     <div class="col-md-12">
                         <div class="owl-carousel owl-theme trending-product four-carousel">
                             @foreach($newArrivalsProducts as $productItem)
@@ -195,7 +195,7 @@
 
                                         </div>
                                         <div class="product-card-body">
-                                            <p class="product-brand">{{ $productItem->brands->name }}</p>
+                                            <p class="product-brand">{{ $productItem->brands->name ?? 'No brand' }}</p>
                                             <h5 class="product-name">
                                                 <a href="{{ url('/collections/'.$productItem->category->slug.'/'.$productItem->slug) }}">
                                                     {{ $productItem->name}}

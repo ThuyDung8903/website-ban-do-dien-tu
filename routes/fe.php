@@ -53,4 +53,5 @@ Route::post('/profile', [\App\Http\Controllers\Frontend\UserController::class, '
 
 Route::get('thank-you', [FrontendController::class, 'thankYou'])->name('thank-you');
 Route::get('about-us', [FrontendController::class, 'aboutUs'])->name('about-us');
+Route::get('contact-us', [FrontendController::class, 'contactUs'])->name('contact-us');
 

@@ -83,6 +83,16 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('/') }}">Homepage</a>
                     </li>
+{{--                    <li class="nav-item dropdown">--}}
+{{--                        <a class="nav-link dropdown-toggle" href="#" id="categoriesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">--}}
+{{--                            Categories--}}
+{{--                        </a>--}}
+{{--                        <ul class="dropdown-menu" aria-labelledby="categoriesDropdown">--}}
+{{--                            @foreach ($categories as $category)--}}
+{{--                                <li><a class="dropdown-item" href="{{ url('/collections/'.$category->slug) }}">{{ $category->name }}</a></li>--}}
+{{--                            @endforeach--}}
+{{--                        </ul>--}}
+{{--                    </li>--}}
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('/collections') }}">All Categories</a>
                     </li>
@@ -102,7 +112,7 @@
                         <a class="nav-link" href="{{ url('/about-us') }}">About us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
+                        <a class="nav-link" href="{{ url('/contact-us') }}">Contact</a>
                     </li>
                 </ul>
             </div>

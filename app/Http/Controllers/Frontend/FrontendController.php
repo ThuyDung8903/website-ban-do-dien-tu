@@ -8,6 +8,7 @@ use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\View;
 
 class FrontendController extends Controller
 {
@@ -21,6 +22,7 @@ class FrontendController extends Controller
         $newArrivalsProducts = Product::where('status', '1')->whereHas('categories', function ($query) {
             $query->where('status', '1');
         })->latest()->take(20)->get();
+        View::share('categories', $categories);
         return view('frontend.index', compact('sliders', 'trendingProducts', 'newArrivalsProducts', 'categories'));
     }
 
@@ -98,5 +100,10 @@ class FrontendController extends Controller
     public function aboutUs()
     {
         return view('frontend.about-us');
+    }
+
+    public function contactUs()
+    {
+        return view('frontend.contact-us');
     }
 }

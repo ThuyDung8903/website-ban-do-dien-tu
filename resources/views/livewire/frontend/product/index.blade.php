@@ -69,7 +69,7 @@
                                     <span class="original-price">${{ $productItem->price }}</span>
                                 </div>
                                 <div class="mt-2">
-                                    <a href="" class="btn btn1" wire:click="addToCart({{ $productItem->id }})">
+                                    <button type="button" href="" class="btn btn1" wire:click="addToCart({{ $productItem->id }})">
                                         <span wire:loading.remove wire:target="addToCart({{ $productItem->id }})">
                                             <i class="fa fa-shopping-cart"> Add To Cart</i>
 
@@ -77,15 +77,15 @@
                                         <span wire:loading wire:target="addToCart({{ $productItem->id }})">
                                             <i class="fa fa-spinner fa-spin"></i>
                                         </span>
-                                    </a>
-                                    <a href="" class="btn btn1" wire:click="addToWishList({{ $productItem->id }})">
+                                    </button>
+                                    <button type="button" class="btn btn1" wire:click="addToWishList({{ $productItem->id }})">
                                         <span wire:loading.remove wire:target="addToWishList({{ $productItem->id }})">
                                             <i class="fa fa-heart"></i>
                                         </span>
                                         <span wire:loading wire:target="addToWishList({{ $productItem->id }})">
                                             <i class="fa fa-spinner fa-spin"></i>
                                         </span>
-                                    </a>
+                                    </button>
                                     <a target="_blank" href="{{ url('/collections/'.$category->slug.'/'.$productItem->slug) }}" class="btn btn1"> View </a>
                                 </div>
                             </div>

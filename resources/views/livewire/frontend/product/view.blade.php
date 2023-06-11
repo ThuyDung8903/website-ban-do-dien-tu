@@ -56,7 +56,9 @@
                         </h4>
                         <hr>
                         <p class="product-path">
-                            <a class="link-dark" href="{{ url('/') }}">Home</a>/ {{ $product->categories->name }} / {{ $product->name }}
+                            <a class="link-dark" href="{{ url('/') }}">Home</a>/
+                            <a href="{{ url('/collections/'.$category->slug) }}"> {{ $product->categories->name }} </a>
+                            / {{ $product->name }}
                         </p>
                         <div>
                             <span class="selling-price">${{ $product->sale_price }}</span>
