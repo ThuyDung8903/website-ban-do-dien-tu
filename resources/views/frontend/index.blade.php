@@ -231,7 +231,7 @@
 @section('script')
     <script>
         $('.four-carousel').owlCarousel({
-            loop: true,
+            loop: false,
             margin: 10,
             dots: true,
             nav: false,

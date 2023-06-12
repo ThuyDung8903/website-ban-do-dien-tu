@@ -58,7 +58,7 @@
 
                             </div>
                             <div class="product-card-body">
-                                <p class="product-brand">{{ $productItem->brand_name }}</p>
+                                <p class="product-brand">{{ $productItem->brand_name ?? 'No brand' }}</p>
                                 <h5 class="product-name">
                                     <a href="{{ url('/collections/'.$category->slug.'/'.$productItem->slug) }}">
                                         {{ $productItem->name}}
