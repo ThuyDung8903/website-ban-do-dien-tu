@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Customer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -28,4 +30,31 @@ class UserController extends Controller
         ]);
         return redirect()->back()->with('message', 'Profile updated successfully');
     }
+
+    public function changePassword()
+    {
+        return view('frontend.users.change-password');
+    }
+
+    public function updatePassword(Request $request)
+    {
+        $request->validate([
+            'current_password' => 'required|string',
+            'password' => 'required|string|min:8|confirmed',
+        ]);
+
+        $user = auth()->guard('customer')->user();
+
+        $checkCurrentPassword = Hash::check($request->current_password, $user->password);
+
+        if ($checkCurrentPassword) {
+            $user->update([
+                'password' => bcrypt($request->password),
+            ]);
+            return redirect()->back()->with('message', 'Password updated successfully');
+        } else {
+            return redirect()->back()->with('message', 'Old password does not match');
+        }
+    }
+
 }

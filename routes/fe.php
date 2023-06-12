@@ -50,6 +50,9 @@ Route::get('/orders', [\App\Http\Controllers\Frontend\OrderController::class, 'i
 Route::get('/orders/{order_id}', [\App\Http\Controllers\Frontend\OrderController::class, 'show'])->middleware('auth.customer');
 Route::get('/profile', [\App\Http\Controllers\Frontend\UserController::class, 'index'])->middleware('auth.customer');
 Route::post('/profile', [\App\Http\Controllers\Frontend\UserController::class, 'update'])->middleware('auth.customer');
+Route::get('/change-password', [\App\Http\Controllers\Frontend\UserController::class, 'changePassword'])->middleware('auth.customer');
+Route::post('/change-password', [\App\Http\Controllers\Frontend\UserController::class, 'updatePassword'])->middleware('auth.customer');
+
 
 Route::get('thank-you', [FrontendController::class, 'thankYou'])->name('thank-you');
 Route::get('about-us', [FrontendController::class, 'aboutUs'])->name('about-us');
