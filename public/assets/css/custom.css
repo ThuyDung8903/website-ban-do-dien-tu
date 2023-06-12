@@ -85,6 +85,10 @@
     font-size: 15px;
 }
 
+.main-navbar .navbar .active {
+    background-color: #9E9E9E;
+}
+
 @media only screen and (max-width: 600px) {
     .main-navbar .top-navbar .nav-link{
         font-size: 12px;

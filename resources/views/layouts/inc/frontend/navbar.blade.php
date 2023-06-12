@@ -80,7 +80,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
+                    <li class="nav-item {{ Request::is('/') ? 'active' : '' }}">
                         <a class="nav-link" href="{{ url('/') }}">Homepage</a>
                     </li>
 {{--                    <li class="nav-item dropdown">--}}
@@ -93,13 +93,13 @@
 {{--                            @endforeach--}}
 {{--                        </ul>--}}
 {{--                    </li>--}}
-                    <li class="nav-item">
+                    <li class="nav-item {{ Request::is('collections') ? 'active' : '' }}">
                         <a class="nav-link" href="{{ url('/collections') }}">All Categories</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item {{ Request::is('new-arrivals') ? 'active' : '' }}">
                         <a class="nav-link" href="{{ url('/new-arrivals') }}">New Arrivals</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item {{ Request::is('trending-products') ? 'active' : '' }}">
                         <a class="nav-link" href="{{ url('/trending-products') }}">Trending Products</a>
                     </li>
 {{--                    <li class="nav-item">--}}
@@ -108,10 +108,10 @@
 {{--                    <li class="nav-item">--}}
 {{--                        <a class="nav-link" href="#">Blogs</a>--}}
 {{--                    </li>--}}
-                    <li class="nav-item">
+                    <li class="nav-item {{ Request::is('about-us') ? 'active' : '' }}">
                         <a class="nav-link" href="{{ url('/about-us') }}">About us</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item {{ Request::is('contact-us') ? 'active' : '' }}">
                         <a class="nav-link" href="{{ url('/contact-us') }}">Contact</a>
                     </li>
                 </ul>
