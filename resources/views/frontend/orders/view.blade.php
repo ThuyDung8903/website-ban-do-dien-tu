@@ -10,7 +10,7 @@
                 <div class="col-md-12">
                     <div class="shadow bg-white p-3">
                         <h4 class="text-primary">
-                            <i class="fa fa-shopping-cart"></i> Order Details
+                            <i class="fa fa-shopping-cart"></i> Order Details <span>#{{ $order->id }}</span> <button class="btn btn-info">{{ $order->order_statuses->name }}</button>
                             <a href="{{ url('/orders') }}" class="btn btn-sm btn-primary float-end">Back</a>
                         </h4>
                         <hr>
@@ -32,7 +32,7 @@
                                     </tr>
                                     <tr>
                                         <th>Total Bill</th>
-                                        <td>${{ $order->customer_payment_price }}</td>
+                                        <td>${{ $order->total_bill }}</td>
                                     </tr>
                                     <tr>
                                         <th>Payment Method</th>
