@@ -36,4 +36,14 @@ class Category extends Model
     {
         return $this->hasManyThrough(Brand::class, Product::class, 'category_id', 'id', 'id', 'brand_id');
     }
+
+    public function getAllBrandName()
+    {
+        return $this->hasMany(Product::class, 'category_id', 'id')
+            ->leftJoin('brands', 'products.brand_id', '=', 'brands.id')
+            ->select('brands.id', 'brands.name')
+            ->distinct()
+            ->orderBy('brands.name')
+            ->get();
+    }
 }

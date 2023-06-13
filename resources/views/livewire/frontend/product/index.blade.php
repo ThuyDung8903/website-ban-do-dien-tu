@@ -8,6 +8,9 @@
                         <h4>Brands</h4>
                     </div>
                     <div class="card-body">
+                        <label class="d-block">
+                            <input type="checkbox" id="brand-null" value="" wire:model="brandInputs"> No brand
+                        </label>
                         @foreach ($brands as $brand)
                             <label class="d-block">
                                 <input type="checkbox" id="brand-{{ $brand->id }}" value="{{ $brand->id }}"
@@ -58,7 +61,7 @@
 
                             </div>
                             <div class="product-card-body">
-                                <p class="product-brand">{{ $productItem->brand_name ?? 'No brand' }}</p>
+                                <p class="product-brand">{{ $productItem->brands->name ?? 'No brand' }}</p>
                                 <h5 class="product-name">
                                     <a href="{{ url('/collections/'.$category->slug.'/'.$productItem->slug) }}">
                                         {{ $productItem->name}}

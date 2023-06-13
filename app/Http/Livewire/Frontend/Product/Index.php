@@ -133,11 +133,10 @@ class Index extends Component
     public function render()
     {
         $this->products = $this->category->products()
-            ->join('brands', 'brand_id', '=', 'brands.id')
-            ->select('brands.name as brand_name', 'products.*')
             ->where('products.status', '1')
             ->when($this->brandInputs, function ($q) {
                 $q->whereIn('brand_id', $this->brandInputs);
+                $q->orWhereNull('brand_id')->where('status', '1')->where('category_id', $this->category->id);
             })
             ->when($this->priceInput, function ($q) {
                 $q->when($this->priceInput == 'low-to-high', function ($q2) {
