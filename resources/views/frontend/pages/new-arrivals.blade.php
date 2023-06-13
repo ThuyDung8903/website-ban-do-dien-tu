@@ -47,9 +47,9 @@
                     </div>
                 @endforelse
 
-                <div class="text-center">
-                    {{ $newArrivalsProducts->links() }}
-                </div>
+{{--                <div class="text-center">--}}
+{{--                    {{ $newArrivalsProducts->links() }}--}}
+{{--                </div>--}}
             </div>
         </div>
     </div>

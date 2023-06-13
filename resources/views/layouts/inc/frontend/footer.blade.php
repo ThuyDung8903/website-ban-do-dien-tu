@@ -6,8 +6,7 @@
                     <h4 class="footer-heading">Thuy Dung Store</h4>
                     <div class="footer-underline"></div>
                     <p>
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                        Lorem Ipsum has been the industry's standard dummy text ever since the 2000s
+                        We are passionate about providing the highest quality beauty products and exceptional customer service. Our store offers a wide selection of skincare, makeup, haircare, and fragrance products from top brands around the world.
                     </p>
                 </div>
                 <div class="col-md-3">
@@ -23,9 +22,9 @@
                     <h4 class="footer-heading">Shop Now</h4>
                     <div class="footer-underline"></div>
                     <div class="mb-2"><a href="{{ url('/collections') }}" class="text-white">Collections</a></div>
-                    <div class="mb-2"><a href="{{ url('/') }}" class="text-white">Trending Products</a></div>
+                    <div class="mb-2"><a href="{{ url('/trending-products') }}" class="text-white">Trending Products</a></div>
                     <div class="mb-2"><a href="{{ url('/new-arrivals') }}" class="text-white">New Arrivals Products</a></div>
-                    <div class="mb-2"><a href="{{ url('/featured-products') }}" class="text-white">Featured Products</a></div>
+{{--                    <div class="mb-2"><a href="{{ url('/featured-products') }}" class="text-white">Featured Products</a></div>--}}
                     <div class="mb-2"><a href="{{ url('/cart') }}" class="text-white">Cart</a></div>
                 </div>
                 <div class="col-md-3">
