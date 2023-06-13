@@ -1,6 +1,6 @@
 <div>
     <div class="row">
-        @if(count($products) !== 0)
+{{--        @if(count($products) !== 0)--}}
         <div class="col-md-3">
             @if($brands)
                 <div class="card">
@@ -20,7 +20,7 @@
                         <button class="btn btn-outline-dark btn-sm" wire:click="$set('brandInputs', [])"><i class="fa fa-times"></i> Clear</button>
                     </div>
                 </div>
-            @endif
+{{--            @endif--}}
 {{--            Filter by price--}}
                 <div class="card mt-3">
                     <div class="card-header">
@@ -101,6 +101,11 @@
                         </div>
                     </div>
                 @endforelse
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    {{ $products->appends(request()->input())->links() }}
+                </div>
             </div>
         </div>
     </div>

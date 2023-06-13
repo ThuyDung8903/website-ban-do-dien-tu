@@ -11,7 +11,8 @@ use Livewire\Component;
 
 class Index extends Component
 {
-    public $products, $category, $brandInputs = [], $priceInput;
+    public $category, $brandInputs = [], $priceInput;
+    protected $products;
     protected $queryString = [
         'brandInputs' => ['except' => '', 'as' => 'brand'],
         'priceInput' => ['except' => '', 'as' => 'price'],
@@ -146,7 +147,7 @@ class Index extends Component
                     $q2->orderBy('sale_price', 'desc');
                 });
             })
-            ->get();
+            ->paginate(9);
         $this->brands = $this->category->brands()->distinct()->orderBy('name')->get();
 
         return view('livewire.frontend.product.index', [
