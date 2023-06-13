@@ -8,6 +8,7 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\MessageBag;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller implements ICrud
 {
@@ -59,6 +60,7 @@ class CategoryController extends Controller implements ICrud
         } else {
             $data['parent_id'] = $request->parent_id;
         }
+        $data['slug'] = Str::slug($request->name);
         unset($data['_token']);
         try {
             Category::create($data);
@@ -92,6 +94,7 @@ class CategoryController extends Controller implements ICrud
         } else {
             $data['parent_id'] = $request->parent_id;
         }
+        $data['slug'] = Str::slug($request->name);
         unset($data['_token']);
         try {
             Category::where('id', $id)->update($data);
@@ -104,7 +107,12 @@ class CategoryController extends Controller implements ICrud
     public function delete($id)
     {
         // TODO: Implement delete() method.
-        Category::where('id', $id)->delete();
+        $category = Category::findOrFail($id);
+        foreach ($category->products as $product) {
+            $product->category_id = null;
+            $product->save();
+        }
+        $category->delete();
         return redirect()->back()->with('success', 'Delete successfully');
     }
 }

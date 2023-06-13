@@ -63,11 +63,12 @@ class OrderController extends Controller
     }
     public function generateInvoice($id)
     {
+        Pdf::setOption(['dpi' => 150, 'defaultFont' => 'Times New Roman']);
         $order = Order::with('customer', 'order_status', 'shipping_method', 'payment_method', 'order_details')->findOrFail($id);
         $data = [
             'order' => $order,
         ];
         $today = Carbon::today()->format('Y-m-d');
-        return Pdf::loadView('admin.order.invoice-generate', $data)->download('invoice-'.$order->tracking_number.'-'.$today.'.pdf');
+        return Pdf::loadView('admin.order.invoice-generate', $data)->download('invoice-' . $order->tracking_number . '-' . $today . '.pdf');
     }
 }

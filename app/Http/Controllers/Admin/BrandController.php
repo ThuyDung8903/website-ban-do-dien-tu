@@ -88,7 +88,12 @@ class BrandController extends Controller implements ICrud
     public function delete($id)
     {
         // TODO: Implement delete() method.
-        Brand::where('id', $id)->delete();
+        $brand = Brand::findOrFail($id);
+        foreach ($brand->products as $product) {
+            $product->brand_id = null;
+            $product->save();
+        }
+        $brand->delete();
         return redirect()->back()->with('success', 'Delete successfully');
     }
 }

@@ -4,19 +4,20 @@
     <div class="container-xl px-4 mt-4 pb-3">
         <div class="row align-items-center justify-content-end">
             <div class="col-12 col-xl-auto mb-3">
-                <a class="btn btn-sm btn-success" href="{{ route('admin.order.list', ['id'=>$order->id]) }}">
+                <a class="btn btn-sm btn-outline-blue" href="{{ route('admin.order.list') }}">
                     <i class="me-1" data-feather="box"></i>
                     Orders List
                 </a>
             </div>
             <div class="col-12 col-xl-auto mb-3">
-                <a class="btn btn-sm btn-success" href="{{ route('admin.order.view-invoice', ['id'=>$order->id]) }}">
+                <a class="btn btn-sm btn-outline-indigo"
+                        href="{{ route('admin.order.view-invoice', ['id'=>$order->id]) }}">
                     <i class="me-1" data-feather="eye"></i>
                     View
                 </a>
             </div>
             <div class="col-12 col-xl-auto mb-3">
-                <a class="btn btn-sm btn-success"
+                <a class="btn btn-sm btn-outline-green"
                         href="{{ route('admin.order.invoice-generate', ['id'=>$order->id]) }}">
                     <i class="me-1" data-feather="download"></i>
                     Download Invoice

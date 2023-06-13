@@ -34,7 +34,6 @@
                     <tr>
                         <th>ID</th>
                         <th>Name</th>
-                        <th>Parent_category</th>
                         <th>Slug</th>
                         <th>Image</th>
                         <th>Desciption</th>
@@ -49,7 +48,6 @@
                     <tr>
                         <th>ID</th>
                         <th>Name</th>
-                        <th>Parent_category</th>
                         <th>Slug</th>
                         <th>Image</th>
                         <th>Description</th>
@@ -65,16 +63,10 @@
                         <tr>
                             <td>{{ $category->id }}</td>
                             <td>{{ $category->name }}</td>
-                            <td>
-                                @foreach($categories as $category1)
-                                    @if($category->parent_id === $category1->id)
-                                        {{ $category1->name }}
-                                    @endif
-                                @endforeach
-                            </td>
                             <td>{{ $category->slug }}</td>
                             <td>
-                                <img src="{{url('/')}}{{ $category->image }}" alt="{{ $category->name }}" width="36px"
+                                <img src="{{ asset($category->image) }}" alt="{{ $category->name }}"
+                                        width="36px"
                                         height="36px">
                             </td>
                             <td>{{ Str::limit($category->description, 15, '...')  }}</td>

@@ -34,6 +34,7 @@
                             <label for="category">Category:</label>
                             <select class="form-select" id="category" name="category">
                                 <option value="all">All</option>
+                                <option value="" {{ request('category') == null ? 'selected' : '' }}>No category</option>
                                 @foreach($categories as $category)
                                     <option value="{{ $category->id }}" {{ request('category') == $category->id ? 'selected' : ''}}>{{ $category->name }}</option>
                                 @endforeach
@@ -46,6 +47,7 @@
                             <label for="author">Brand:</label>
                             <select class="form-select" id="brand" name="brand">
                                 <option value="all">All</option>
+                                <option value="" {{ request('brand') == null ? 'selected' : '' }}>No brand</option>
                                 @foreach($brands as $brand)
                                     <option value="{{ $brand->id }}" {{ request('brand') == $brand->id ? 'selected' : ''}}>{{ $brand->name }}</option>
                                 @endforeach
@@ -155,8 +157,8 @@
                                 </div>
                             </td>
                             <td>{{ Str::limit($product->name, 30, '...') }}</td>
-                            <td>{{ $product->category->name }}</td>
-                            <td>{{ $product->brand->name }}</td>
+                            <td>{{ $product->category_id != null ? $product->category->name : 'No category' }}</td>
+                            <td>{{ $product->brand_id != null ? $product->brand->name : 'No brand' }}</td>
                             <td>{{ $product->price }}</td>
                             <td>{{ $product->sale_price }}</td>
                             <td>{{ $product->view }}</td>
